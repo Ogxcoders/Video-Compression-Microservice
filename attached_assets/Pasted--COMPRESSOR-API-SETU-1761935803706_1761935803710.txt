@@ -1,0 +1,1143 @@
+================================================================================
+COMPRESSOR API SETUP & DEPLOYMENT PLAN
+================================================================================
+
+PROJECT: Video Compression Microservice with Job Queue & HLS Support
+DOMAIN: compress.yourdomain.com
+LANGUAGE: Go
+DEPLOYMENT: Coolify (Docker Compose)
+
+================================================================================
+1. COMPRESSOR API CONTAINER SETUP
+================================================================================
+
+Docker Configuration:
+- Language: Go 1.21+
+- Port: 3000 (internal)
+- Exposed Port: 443 (HTTPS via Coolify)
+- Database: Redis (for job queue) + PostgreSQL (for job history)
+- Storage: Temporary file storage for processing
+- FFmpeg: Required for video encoding and HLS generation
+- ImageMagick/GraphicsMagick: Required for image compression
+
+Environment Variables:
+- API_KEY=[secure-api-key]
+- ALLOWED_DOMAINS=https://wp.yourdomain.com
+- LOG_LEVEL=info
+- MAX_VIDEO_FILE_SIZE=5000000000 (5GB in bytes)
+- MAX_IMAGE_FILE_SIZE=500000000 (500MB in bytes)
+- TEMP_DIR=/tmp/compression
+- PORT=3000
+- REDIS_URL=redis://redis:6379
+- DATABASE_URL=postgres://user:pass@db:5432/compression
+- MAX_CONCURRENT_JOBS=5
+- JOB_TIMEOUT=3600 (seconds)
+- FFMPEG_PATH=/usr/bin/ffmpeg
+- IMAGEMAGICK_PATH=/usr/bin/convert
+
+================================================================================
+2. JOB QUEUE SYSTEM
+================================================================================
+
+Queue Architecture:
+- Backend: Redis (fast, in-memory queue)
+- Fallback: PostgreSQL (persistent queue)
+- Job Format: JSON
+- Processing: FIFO with priority support
+- Concurrency: Configurable max concurrent jobs
+- Supports: Video compression, Image compression, Combined compression
+
+Job Structure:
+{
+  "job_id": "uuid-v4",
+  "post_id": 12345,
+  "user_id": 1,
+  "compression_type": "both",
+  "video_data": {
+    "original_file_url": "https://wp.yourdomain.com/uploads/video.mp4",
+    "quality_preset": "medium",
+    "hls_enabled": true,
+    "hls_variants": ["480p", "720p", "1080p"]
+  },
+  "image_data": {
+    "original_file_url": "https://wp.yourdomain.com/uploads/poster.jpg",
+    "quality_preset": "high",
+    "variants": ["thumbnail", "medium", "large", "original"]
+  },
+  "priority": 5,
+  "status": "pending",
+  "video_status": "pending",
+  "image_status": "pending",
+  "created_at": "2025-01-15T10:30:00Z",
+  "scheduled_time": "2025-01-15T14:00:00Z",
+  "retry_count": 0,
+  "max_retries": 3
+}
+
+Queue States:
+- pending: Waiting to be processed
+- processing: Currently being compressed
+- completed: Successfully compressed
+- failed: Compression failed
+- scheduled: Waiting for scheduled time
+
+Queue Operations:
+- Enqueue: Add job to queue
+- Dequeue: Get next job from queue
+- Update Status: Update job status (video, image, or both)
+- Retry: Re-queue failed job
+- Cancel: Remove job from queue
+- Pause: Temporarily pause job
+- Resume: Resume paused job
+
+================================================================================
+3. CONTINUOUS COMPRESSION WITH QUEUE PROCESSING
+================================================================================
+
+Queue Processing Flow:
+1. Job arrives → Added to Redis queue
+2. Worker checks queue every 5 seconds
+3. If < MAX_CONCURRENT_JOBS, dequeue next job
+4. Determine compression type (video, image, or both)
+5. If video:
+   a. Download video from WordPress
+   b. Validate video format
+   c. Apply compression settings
+   d. Encode video (or generate HLS variants)
+   e. Upload compressed video back to WordPress
+6. If image:
+   a. Download image from WordPress
+   b. Validate image format
+   c. Apply compression settings
+   d. Generate image variants
+   e. Upload compressed images back to WordPress
+7. Update job status to "completed"
+8. Clean up temporary files
+9. Process next job in queue
+
+Worker Configuration:
+- Number of workers: Configurable (default 1)
+- Check interval: 5 seconds
+- Timeout per job: 3600 seconds (1 hour)
+- Retry failed jobs: Yes (max 3 retries)
+- Exponential backoff: 60s, 300s, 900s
+- Parallel processing: Video and image can be processed in parallel if resources allow
+
+Queue Monitoring:
+- Total jobs in queue
+- Currently processing jobs (video, image, both)
+- Completed jobs (today/week/month)
+- Failed jobs
+- Average processing time (video, image, combined)
+- Queue depth
+- Worker status
+- Compression type breakdown
+
+================================================================================
+4. SCHEDULED COMPRESSION
+================================================================================
+
+Scheduled Compression Features:
+- Schedule compression for specific time
+- Schedule for off-peak hours (e.g., 2 AM - 6 AM)
+- Recurring schedules (daily, weekly, monthly)
+- Automatic scheduling based on file size
+
+Scheduler Implementation:
+- Cron-like scheduler in Go
+- Check every minute for jobs to schedule
+- Move scheduled jobs to active queue at scheduled time
+- Support timezone configuration
+
+Scheduled Job Workflow:
+1. WordPress sends job with scheduled_time and compression_type
+2. Job stored in database with status "scheduled"
+3. Scheduler checks every minute for jobs to schedule
+4. When scheduled_time reached, move to queue
+5. Queue processor picks up job
+6. Process video and/or image based on compression_type
+7. Update status to "completed"
+
+Off-Peak Scheduling:
+- Define off-peak hours (e.g., 2 AM - 6 AM)
+- Large files (> 1GB) automatically scheduled for off-peak
+- User can override and compress immediately
+- Estimated time shown to user
+
+================================================================================
+5. HLS COMPRESSION & STREAMING
+================================================================================
+
+HLS (HTTP Live Streaming) Overview:
+- Adaptive bitrate streaming
+- Multiple quality variants
+- Segment-based delivery
+- .m3u8 playlist format
+- .ts segment files
+
+HLS Variants Configuration:
+Variant 1: LOW (480p)
+  - Resolution: 854x480
+  - Bitrate: 1000 kbps
+  - Codec: H.264
+  - Frame rate: 30fps
+  - Use case: Mobile, low bandwidth
+
+Variant 2: MEDIUM (720p)
+  - Resolution: 1280x720
+  - Bitrate: 2500 kbps
+  - Codec: H.264
+  - Frame rate: 30fps
+  - Use case: Standard playback
+
+Variant 3: HIGH (1080p)
+  - Resolution: 1920x1080
+  - Bitrate: 5000 kbps
+  - Codec: H.264
+  - Frame rate: 30fps
+  - Use case: High-quality playback
+
+HLS Generation Process:
+1. Receive video file
+2. For each variant:
+   a. Transcode to variant specs
+   b. Split into 10-second segments
+   c. Generate .ts files
+   d. Create variant playlist (.m3u8)
+3. Create master playlist with all variants
+4. Upload all files to WordPress
+5. Return master playlist URL
+
+HLS Playlist Structure:
+Master Playlist (master.m3u8):
+  #EXTM3U
+  #EXT-X-STREAM-INF:BANDWIDTH=1000000
+  480p/playlist.m3u8
+  #EXT-X-STREAM-INF:BANDWIDTH=2500000
+  720p/playlist.m3u8
+  #EXT-X-STREAM-INF:BANDWIDTH=5000000
+  1080p/playlist.m3u8
+
+Variant Playlist (480p/playlist.m3u8):
+  #EXTM3U
+  #EXT-X-VERSION:3
+  #EXT-X-TARGETDURATION:10
+  #EXTINF:10.0,
+  segment-0.ts
+  #EXTINF:10.0,
+  segment-1.ts
+  ...
+  #EXT-X-ENDLIST
+
+HLS Streaming Benefits:
+- Adaptive bitrate (auto-adjust to bandwidth)
+- Smooth playback on varying connections
+- Reduced buffering
+- Better user experience
+- Compatible with all modern players
+
+================================================================================
+6. IMAGE COMPRESSION & VARIANTS
+================================================================================
+
+Image Compression Overview:
+- Supports: JPEG, PNG, WebP, GIF
+- Output formats: JPEG, WebP (auto-select based on browser support)
+- Lossless and lossy compression
+- Responsive image variants
+- Automatic quality optimization
+
+Image Compression Process:
+1. Receive image file
+2. Validate image format and size
+3. For each variant:
+   a. Resize to variant dimensions
+   b. Apply quality preset
+   c. Convert to optimal format (JPEG/WebP)
+   d. Save variant file
+4. Upload all variants to WordPress
+5. Return variant URLs
+
+Image Variants Configuration:
+
+Variant 1: THUMBNAIL
+---------
+Dimensions: 150x150px
+Quality Preset: Medium (75%)
+Use case: Gallery thumbnails, previews
+File Size: 5-15KB
+Processing Time: 1-2 seconds
+
+Variant 2: MEDIUM
+---------
+Dimensions: 400x300px
+Quality Preset: High (85%)
+Use case: Blog posts, featured images
+File Size: 20-50KB
+Processing Time: 2-5 seconds
+
+Variant 3: LARGE
+---------
+Dimensions: 800x600px
+Quality Preset: High (85%)
+Use case: Full-width display, hero images
+File Size: 50-150KB
+Processing Time: 5-10 seconds
+
+Variant 4: ORIGINAL
+---------
+Dimensions: Original (no resize)
+Quality Preset: Ultra (95%)
+Use case: Archive, high-quality download
+File Size: Original size - 10-20%
+Processing Time: 10-15 seconds
+
+Image Quality Presets:
+
+Quality Preset: LOW
+---------
+Use Case: Thumbnails, previews
+Quality: 60%
+Format: JPEG/WebP
+File Size Reduction: 70-80%
+Processing Time: 1-2 seconds
+Best For: Quick loading, thumbnails
+ImageMagick Command:
+  convert input.jpg -quality 60 output.jpg
+
+Quality Preset: MEDIUM
+---------
+Use Case: Standard web display
+Quality: 75%
+Format: JPEG/WebP
+File Size Reduction: 50-65%
+Processing Time: 2-5 seconds
+Best For: General web use, balanced quality/size
+ImageMagick Command:
+  convert input.jpg -quality 75 output.jpg
+
+Quality Preset: HIGH
+---------
+Use Case: High-quality display
+Quality: 85%
+Format: JPEG/WebP
+File Size Reduction: 30-45%
+Processing Time: 5-10 seconds
+Best For: Magazine-style, high-quality display
+ImageMagick Command:
+  convert input.jpg -quality 85 output.jpg
+
+Quality Preset: ULTRA
+---------
+Use Case: Archive, print-ready
+Quality: 95%
+Format: JPEG/WebP
+File Size Reduction: 10-20%
+Processing Time: 10-15 seconds
+Best For: Professional use, archival
+ImageMagick Command:
+  convert input.jpg -quality 95 output.jpg
+
+IMAGE VARIANTS:
+
+Variant: THUMBNAIL
+---------
+Dimensions: 150x150px
+Quality: Medium (75%)
+Use Case: Gallery thumbnails, previews
+File Size: 5-15KB
+ImageMagick Command:
+  convert input.jpg -resize 150x150 -quality 75 thumbnail.jpg
+
+Variant: MEDIUM
+---------
+Dimensions: 400x300px
+Quality: High (85%)
+Use Case: Blog posts, featured images
+File Size: 20-50KB
+ImageMagick Command:
+  convert input.jpg -resize 400x300 -quality 85 medium.jpg
+
+Variant: LARGE
+---------
+Dimensions: 800x600px
+Quality: High (85%)
+Use Case: Full-width display, hero images
+File Size: 50-150KB
+ImageMagick Command:
+  convert input.jpg -resize 800x600 -quality 85 large.jpg
+
+Variant: ORIGINAL
+---------
+Dimensions: Original (no resize)
+Quality: Ultra (95%)
+Use Case: Archive, high-quality download
+File Size: Original size - 10-20%
+ImageMagick Command:
+  convert input.jpg -quality 95 original.jpg
+
+Processing Steps for Combined Compression:
+1. Download video and image from WordPress
+2. Validate both formats and file sizes
+3. Start parallel processing (if resources allow):
+   a. Video: Apply quality preset, encode video (or generate HLS variants)
+   b. Image: Generate variants with quality presets
+4. Upload all compressed files back to WordPress
+5. Update job status to "completed"
+6. Clean up temporary files
+7. Return response with all URLs
+
+Processing Steps for Video Only:
+1. Download video from WordPress
+2. Validate video format and file size
+3. Apply quality preset
+4. Encode video (or generate HLS variants)
+5. Upload compressed video back to WordPress
+6. Update job status to "completed"
+7. Clean up temporary files
+8. Return response
+
+Processing Steps for Image Only:
+1. Download image from WordPress
+2. Validate image format and file size
+3. For each variant:
+   a. Resize to variant dimensions
+   b. Apply quality preset
+   c. Save variant file
+4. Upload all variants back to WordPress
+5. Update job status to "completed"
+6. Clean up temporary files
+7. Return response
+
+Error Handling:
+- Invalid video format: Return 400 Bad Request
+- Invalid image format: Return 400 Bad Request
+- File too large: Return 413 Payload Too Large
+- Compression failed: Return 500 Internal Server Error
+- Timeout: Return 504 Gateway Timeout
+- Disk space full: Return 507 Insufficient Storage
+- Queue full: Return 503 Service Unavailable
+
+================================================================================
+7. API ENDPOINTS
+================================================================================
+
+Endpoint 1: POST /compress
+---------
+Purpose: Compress video file, image file, or both
+Authentication: X-API-Key header + Domain whitelist
+Request:
+  {
+    "job_id": "uuid-v4",
+    "post_id": 12345,
+    "compression_type": "both",
+    "video_data": {
+      "file_url": "https://wp.yourdomain.com/uploads/video.mp4",
+      "quality": "medium",
+      "hls_enabled": true,
+      "hls_variants": ["480p", "720p", "1080p"]
+    },
+    "image_data": {
+      "file_url": "https://wp.yourdomain.com/uploads/poster.jpg",
+      "quality": "high",
+      "variants": ["thumbnail", "medium", "large", "original"]
+    },
+    "priority": 5,
+    "scheduled_time": "2025-01-15T14:00:00Z"
+  }
+
+Response:
+  {
+    "status": "queued",
+    "job_id": "uuid-v4",
+    "compression_type": "both",
+    "queue_position": 3,
+    "estimated_time": 600
+  }
+
+Endpoint 2: GET /status/:job_id
+---------
+Purpose: Check compression job status
+Response:
+  {
+    "job_id": "uuid-v4",
+    "compression_type": "both",
+    "overall_status": "processing",
+    "overall_progress": 55,
+    "video_status": "processing",
+    "video_progress": 45,
+    "video_current_step": "encoding_720p",
+    "image_status": "completed",
+    "image_progress": 100,
+    "estimated_time": 300
+  }
+
+Endpoint 3: GET /result/:job_id
+---------
+Purpose: Get compression result
+Response:
+  {
+    "job_id": "uuid-v4",
+    "compression_type": "both",
+    "overall_status": "completed",
+    "video_result": {
+      "status": "completed",
+      "original_size": 1000000000,
+      "compressed_size": 250000000,
+      "compression_ratio": 0.75,
+      "processing_time": 300,
+      "compressed_url": "https://wp.yourdomain.com/uploads/video-compressed.mp4",
+      "hls_playlist_url": "https://wp.yourdomain.com/uploads/video-hls/master.m3u8",
+      "hls_variants": {
+        "480p": "https://wp.yourdomain.com/uploads/video-hls/480p/playlist.m3u8",
+        "720p": "https://wp.yourdomain.com/uploads/video-hls/720p/playlist.m3u8",
+        "1080p": "https://wp.yourdomain.com/uploads/video-hls/1080p/playlist.m3u8"
+      }
+    },
+    "image_result": {
+      "status": "completed",
+      "original_size": 5000000,
+      "compressed_size": 1500000,
+      "compression_ratio": 0.70,
+      "processing_time": 15,
+      "variants": {
+        "thumbnail": {
+          "url": "https://wp.yourdomain.com/uploads/poster-thumbnail.jpg",
+          "size": 12000,
+          "dimensions": "150x150"
+        },
+        "medium": {
+          "url": "https://wp.yourdomain.com/uploads/poster-medium.jpg",
+          "size": 45000,
+          "dimensions": "400x300"
+        },
+        "large": {
+          "url": "https://wp.yourdomain.com/uploads/poster-large.jpg",
+          "size": 120000,
+          "dimensions": "800x600"
+        },
+        "original": {
+          "url": "https://wp.yourdomain.com/uploads/poster-original.jpg",
+          "size": 4500000,
+          "dimensions": "original"
+        }
+      }
+    }
+  }
+
+Endpoint 8: POST /compress/video-only
+---------
+Purpose: Compress video only (skip image)
+Request: Same as /compress but compression_type: "video"
+Response: Same as /compress
+
+Endpoint 9: POST /compress/image-only
+---------
+Purpose: Compress image only (skip video)
+Request: Same as /compress but compression_type: "image"
+Response: Same as /compress
+
+================================================================================
+8. SECURITY IMPLEMENTATION
+================================================================================
+
+Security Layer 1: Domain Whitelist
+---------
+Configuration:
+  ALLOWED_DOMAINS=https://wp.yourdomain.com,https://wordpress.yourdomain.com
+
+Implementation (Go):
+  - Check Origin header from request
+  - Check Referer header as fallback
+  - Reject if not in whitelist
+  - Return 403 Forbidden
+  - Log all rejections
+
+Security Layer 2: API Key Authentication
+---------
+Configuration:
+  API_KEY=[generate-secure-key]
+
+Implementation (Go):
+  - Require X-API-Key header
+  - Compare with environment variable
+  - Reject if missing or invalid
+  - Return 401 Unauthorized
+  - Log all failed attempts
+
+Security Layer 3: Rate Limiting
+---------
+Configuration:
+  - Max 10 requests per minute per IP
+  - Max 100 concurrent compressions
+  - Max 1000 jobs per day per domain
+
+Implementation (Go):
+  - Use token bucket algorithm
+  - Track by IP address
+  - Return 429 Too Many Requests
+  - Log rate limit violations
+
+Security Layer 4: Input Validation
+---------
+- Validate file URL format (must be from whitelisted domain)
+- Validate compression_type (video, image, both)
+- Validate quality parameter (low/medium/high/ultra for images, low/medium/high/hls-adaptive for videos)
+- Validate HLS variants (480p/720p/1080p only)
+- Validate image variants (thumbnail/medium/large/original only)
+- Validate file size (< MAX_VIDEO_FILE_SIZE for videos, < MAX_IMAGE_FILE_SIZE for images)
+- Validate video format (mp4/webm/mov/avi/mkv)
+- Validate image format (jpg/jpeg/png/webp/gif)
+- Reject invalid inputs with 400 Bad Request
+
+Security Layer 5: File Security
+---------
+- Download files to isolated temp directory
+- Validate file headers (magic bytes)
+- Scan for malware (optional)
+- Delete temp files after processing
+- Use secure file permissions (600)
+
+================================================================================
+9. COMPRESSION LOGIC & QUALITY PRESETS
+================================================================================
+
+Supported Input Formats:
+
+Video Formats:
+- mp4, webm, mov, avi, mkv
+
+Image Formats:
+- jpg, jpeg, png, webp, gif
+
+Supported Output Formats:
+
+Video:
+- mp4 (standard compression)
+- HLS (adaptive streaming)
+
+Image:
+- jpg (standard compression)
+- webp (modern format, better compression)
+- png (lossless, if input is PNG)
+
+VIDEO QUALITY PRESETS:
+
+Quality Preset: LOW
+---------
+Use Case: Quick preview, social media
+Resolution: 480p (854x480)
+Bitrate: 1000 kbps
+Codec: H.264
+Frame rate: 30fps
+File Size Reduction: 85-90%
+Processing Time: 2-5 minutes
+FFmpeg Command:
+  ffmpeg -i input.mp4 -vf scale=854:480 -b:v 1000k -c:v libx264 -preset fast output.mp4
+
+Quality Preset: MEDIUM
+---------
+Use Case: Standard playback, web streaming
+Resolution: 720p (1280x720)
+Bitrate: 2500 kbps
+Codec: H.264
+Frame rate: 30fps
+File Size Reduction: 70-80%
+Processing Time: 5-15 minutes
+FFmpeg Command:
+  ffmpeg -i input.mp4 -vf scale=1280:720 -b:v 2500k -c:v libx264 -preset medium output.mp4
+
+Quality Preset: HIGH
+---------
+Use Case: Archive, high-quality playback
+Resolution: 1080p (1920x1080)
+Bitrate: 5000 kbps
+Codec: H.264
+Frame rate: 30fps
+File Size Reduction: 40-60%
+Processing Time: 15-30 minutes
+FFmpeg Command:
+  ffmpeg -i input.mp4 -vf scale=1920:1080 -b:v 5000k -c:v libx264 -preset slow output.mp4
+
+Quality Preset: HLS-ADAPTIVE
+---------
+Use Case: Streaming with adaptive bitrate
+Variants Generated:
+  - 480p @ 1000 kbps
+  - 720p @ 2500 kbps
+  - 1080p @ 5000 kbps
+Codec: H.264
+Segment Duration: 10 seconds
+Playlist: .m3u8 format
+Processing Time: 30-60 minutes (all variants)
+FFmpeg Command (per variant):
+  ffmpeg -i input.mp4 -vf scale=1280:720 -b:v 2500k -c:v libx264 \
+    -hls_time 10 -hls_list_size 0 -f hls output.m3u8
+
+Processing Steps:
+1. Download video from WordPress
+2. Validate video format and file size
+3. Extract video metadata (duration, resolution, bitrate)
+4. For standard compression:
+   a. Apply quality preset
+   b. Encode video
+   c. Upload compressed video
+5. For HLS compression:
+   a. For each variant:
+      - Transcode to variant specs
+      - Generate segments
+      - Create variant playlist
+   b. Create master playlist
+   c. Upload all files
+6. Update job status to "completed"
+7. Clean up temporary files
+8. Return response
+
+Error Handling:
+- Invalid video format: Return 400 Bad Request
+- File too large: Return 413 Payload Too Large
+- Compression failed: Return 500 Internal Server Error
+- Timeout: Return 504 Gateway Timeout
+- Disk space full: Return 507 Insufficient Storage
+- Queue full: Return 503 Service Unavailable
+
+IMAGE QUALITY PRESETS:
+
+Quality Preset: LOW
+---------
+Use Case: Thumbnails, previews
+Quality: 60%
+Format: JPEG/WebP
+File Size Reduction: 70-80%
+Processing Time: 1-2 seconds
+Best For: Quick loading, thumbnails
+ImageMagick Command:
+  convert input.jpg -quality 60 output.jpg
+
+Quality Preset: MEDIUM
+---------
+Use Case: Standard web display
+Quality: 75%
+Format: JPEG/WebP
+File Size Reduction: 50-65%
+Processing Time: 2-5 seconds
+Best For: General web use, balanced quality/size
+ImageMagick Command:
+  convert input.jpg -quality 75 output.jpg
+
+Quality Preset: HIGH
+---------
+Use Case: High-quality display
+Quality: 85%
+Format: JPEG/WebP
+File Size Reduction: 30-45%
+Processing Time: 5-10 seconds
+Best For: Magazine-style, high-quality display
+ImageMagick Command:
+  convert input.jpg -quality 85 output.jpg
+
+Quality Preset: ULTRA
+---------
+Use Case: Archive, print-ready
+Quality: 95%
+Format: JPEG/WebP
+File Size Reduction: 10-20%
+Processing Time: 10-15 seconds
+Best For: Professional use, archival
+ImageMagick Command:
+  convert input.jpg -quality 95 output.jpg
+
+IMAGE VARIANTS:
+
+Variant: THUMBNAIL
+---------
+Dimensions: 150x150px
+Quality: Medium (75%)
+Use Case: Gallery thumbnails, previews
+File Size: 5-15KB
+ImageMagick Command:
+  convert input.jpg -resize 150x150 -quality 75 thumbnail.jpg
+
+Variant: MEDIUM
+---------
+Dimensions: 400x300px
+Quality: High (85%)
+Use Case: Blog posts, featured images
+File Size: 20-50KB
+ImageMagick Command:
+  convert input.jpg -resize 400x300 -quality 85 medium.jpg
+
+Variant: LARGE
+---------
+Dimensions: 800x600px
+Quality: High (85%)
+Use Case: Full-width display, hero images
+File Size: 50-150KB
+ImageMagick Command:
+  convert input.jpg -resize 800x600 -quality 85 large.jpg
+
+Variant: ORIGINAL
+---------
+Dimensions: Original (no resize)
+Quality: Ultra (95%)
+Use Case: Archive, high-quality download
+File Size: Original size - 10-20%
+ImageMagick Command:
+  convert input.jpg -quality 95 original.jpg
+
+Processing Steps for Combined Compression:
+1. Download video and image from WordPress
+2. Validate both formats and file sizes
+3. Start parallel processing (if resources allow):
+   a. Video: Apply quality preset, encode video (or generate HLS variants)
+   b. Image: Generate variants with quality presets
+4. Upload all compressed files back to WordPress
+5. Update job status to "completed"
+6. Clean up temporary files
+7. Return response with all URLs
+
+Processing Steps for Video Only:
+1. Download video from WordPress
+2. Validate video format and file size
+3. Apply quality preset
+4. Encode video (or generate HLS variants)
+5. Upload compressed video back to WordPress
+6. Update job status to "completed"
+7. Clean up temporary files
+8. Return response
+
+Processing Steps for Image Only:
+1. Download image from WordPress
+2. Validate image format and file size
+3. For each variant:
+   a. Resize to variant dimensions
+   b. Apply quality preset
+   c. Save variant file
+4. Upload all variants back to WordPress
+5. Update job status to "completed"
+6. Clean up temporary files
+7. Return response
+
+Error Handling:
+- Invalid video format: Return 400 Bad Request
+- Invalid image format: Return 400 Bad Request
+- File too large: Return 413 Payload Too Large
+- Compression failed: Return 500 Internal Server Error
+- Timeout: Return 504 Gateway Timeout
+- Disk space full: Return 507 Insufficient Storage
+- Queue full: Return 503 Service Unavailable
+
+================================================================================
+10. DATABASE SCHEMA - JOB HISTORY
+================================================================================
+
+Table: compression_jobs
+---------
+Columns:
+  - job_id (UUID, PRIMARY KEY)
+  - post_id (INT)
+  - user_id (INT)
+  - compression_type (VARCHAR 50) - 'video', 'image', 'both'
+  - video_data (JSON) - original_url, quality, hls_enabled, etc.
+  - image_data (JSON) - original_url, quality, variants, etc.
+  - video_status (VARCHAR 50)
+  - image_status (VARCHAR 50)
+  - overall_status (VARCHAR 50)
+  - video_progress (INT 0-100)
+  - image_progress (INT 0-100)
+  - overall_progress (INT 0-100)
+  - video_result (JSON) - compressed_url, hls_urls, etc.
+  - image_result (JSON) - variant_urls, etc.
+  - original_video_size (BIGINT)
+  - original_image_size (BIGINT)
+  - compressed_video_size (BIGINT)
+  - compressed_image_size (BIGINT)
+  - video_compression_ratio (DECIMAL 5,2)
+  - image_compression_ratio (DECIMAL 5,2)
+  - video_processing_time (INT seconds)
+  - image_processing_time (INT seconds)
+  - error_message (TEXT)
+  - retry_count (INT)
+  - scheduled_time (TIMESTAMP)
+  - started_at (TIMESTAMP)
+  - completed_at (TIMESTAMP)
+  - created_at (TIMESTAMP)
+  - updated_at (TIMESTAMP)
+
+Indexes:
+  - PRIMARY KEY (job_id)
+  - INDEX idx_compression_type (compression_type)
+  - INDEX idx_overall_status (overall_status)
+  - INDEX idx_created_at (created_at)
+  - INDEX idx_scheduled_time (scheduled_time)
+
+================================================================================
+11. COMPRESSOR API ENVIRONMENT VARIABLES
+================================================================================
+
+Required:
+- API_KEY=[generate-secure-key]
+- ALLOWED_DOMAINS=https://wp.yourdomain.com
+- PORT=3000
+- REDIS_URL=redis://redis:6379
+- DATABASE_URL=postgres://user:pass@db:5432/compression
+
+Optional:
+- LOG_LEVEL=info (debug, info, warn, error)
+- MAX_VIDEO_FILE_SIZE=5000000000
+- MAX_IMAGE_FILE_SIZE=500000000
+- TEMP_DIR=/tmp/compression
+- TIMEOUT=3600 (seconds)
+- MAX_CONCURRENT_JOBS=5
+- JOB_CHECK_INTERVAL=5 (seconds)
+- FFMPEG_PATH=/usr/bin/ffmpeg
+- IMAGEMAGICK_PATH=/usr/bin/convert
+- SEGMENT_DURATION=10 (seconds for HLS)
+- COMPRESSION_TYPES=video,image,both (supported types)
+
+================================================================================
+12. TESTING PROCEDURES
+================================================================================
+
+TEST 1: Health Check
+---------
+Command: curl https://compress.yourdomain.com/health
+Expected: 200 OK with healthy status
+
+TEST 2: Domain Whitelist
+---------
+Command: curl -H "Origin: https://wp.yourdomain.com" https://compress.yourdomain.com/health
+Expected: 200 OK
+
+Command: curl -H "Origin: https://malicious.com" https://compress.yourdomain.com/health
+Expected: 403 Forbidden
+
+TEST 3: API Key Validation
+---------
+Command: curl -H "X-API-Key: wrong-key" https://compress.yourdomain.com/health
+Expected: 401 Unauthorized
+
+Command: curl -H "X-API-Key: [correct-key]" https://compress.yourdomain.com/health
+Expected: 200 OK
+
+TEST 4: Queue System
+---------
+Command: 
+  curl -X POST https://compress.yourdomain.com/compress \
+    -H "X-API-Key: [api-key]" \
+    -H "Origin: https://wp.yourdomain.com" \
+    -d '{"file_url":"https://wp.yourdomain.com/uploads/test.mp4","quality":"medium"}'
+
+Expected: 200 OK with job_id and queue_position
+
+TEST 5: Job Status
+---------
+Command: curl https://compress.yourdomain.com/status/[job-id]
+Expected: 200 OK with job status and progress
+
+TEST 6: HLS Generation
+---------
+Command:
+  curl -X POST https://compress.yourdomain.com/compress \
+    -H "X-API-Key: [api-key]" \
+    -H "Origin: https://wp.yourdomain.com" \
+    -d '{"file_url":"https://wp.yourdomain.com/uploads/test.mp4","hls_enabled":true,"hls_variants":["480p","720p","1080p"]}'
+
+Expected: 200 OK with HLS playlist URL
+
+TEST 7: Rate Limiting
+---------
+Command: Send 15 requests in 1 minute
+Expected: First 10 succeed, next 5 return 429 Too Many Requests
+
+TEST 8: Scheduled Compression
+---------
+Command:
+  curl -X POST https://compress.yourdomain.com/compress \
+    -H "X-API-Key: [api-key]" \
+    -d '{"file_url":"...","scheduled_time":"2025-01-15T14:00:00Z"}'
+
+Expected: 200 OK with status "scheduled"
+
+TEST 9: Image Compression
+---------
+Command:
+  curl -X POST https://compress.yourdomain.com/compress/image-only \
+    -H "X-API-Key: [api-key]" \
+    -H "Origin: https://wp.yourdomain.com" \
+    -d '{"file_url":"https://wp.yourdomain.com/uploads/poster.jpg","quality":"high","variants":["thumbnail","medium","large"]}'
+
+Expected: 200 OK with image variant URLs
+
+TEST 10: Combined Video & Image Compression
+---------
+Command:
+  curl -X POST https://compress.yourdomain.com/compress \
+    -H "X-API-Key: [api-key]" \
+    -H "Origin: https://wp.yourdomain.com" \
+    -d '{"compression_type":"both","video_data":{"file_url":"...","quality":"medium"},"image_data":{"file_url":"...","quality":"high"}}'
+
+Expected: 200 OK with both video and image results
+
+TEST 11: Image Quality Presets
+---------
+Command: Send same image with different quality presets (low, medium, high, ultra)
+Expected: File sizes decrease with lower quality
+
+TEST 12: Image Variants
+---------
+Command: Request all image variants (thumbnail, medium, large, original)
+Expected: All 4 variants generated with correct dimensions
+
+================================================================================
+13. MONITORING & LOGGING
+================================================================================
+
+Logs to Monitor:
+- API request logs (timestamp, method, path, status, response time)
+- Compression logs (file size, compression ratio, processing time, type)
+- Queue logs (job enqueued, dequeued, completed, failed, type)
+- HLS logs (variant generation, segment creation)
+- Image logs (variant generation, resizing, quality application)
+- Error logs (failures, timeouts, validation errors)
+- Security logs (failed auth, domain rejections, rate limit hits)
+
+Metrics to Track:
+- Requests per minute (by type: video, image, both)
+- Average response time (by type)
+- Compression success rate (by type)
+- Average compression ratio (by type)
+- Queue depth (by type)
+- Average job processing time (by type)
+- CPU usage
+- Memory usage
+- Disk space usage
+- Redis memory usage
+- Database size
+
+Alerts to Set:
+- High error rate (> 5%)
+- High response time (> 30 seconds)
+- Queue depth > 50
+- Disk space low (< 10%)
+- Memory usage high (> 80%)
+- API key failures (> 10 in 5 minutes)
+- Redis connection lost
+- Database connection lost
+- Image compression failures (> 5%)
+- Video compression failures (> 5%)
+
+================================================================================
+14. TROUBLESHOOTING
+================================================================================
+
+Issue: 403 Forbidden errors
+Solution:
+  1. Verify WordPress domain is in ALLOWED_DOMAINS
+  2. Check Origin header is being sent
+  3. Verify domain matches exactly (https vs http)
+
+Issue: 401 Unauthorized errors
+Solution:
+  1. Verify API_KEY environment variable is set
+  2. Verify WordPress is sending correct API key
+  3. Check for extra spaces in API key
+
+Issue: Compression fails
+Solution:
+  1. Check video format is supported
+  2. Check file size is under MAX_FILE_SIZE
+  3. Check disk space available
+  4. Check temp directory permissions
+  5. Review error logs
+
+Issue: Queue not processing
+Solution:
+  1. Check Redis connection
+  2. Check worker is running
+  3. Check job status in database
+  4. Check logs for errors
+  5. Restart worker if needed
+
+Issue: HLS generation fails
+Solution:
+  1. Verify FFmpeg is installed
+  2. Check HLS variant settings
+  3. Check disk space for HLS files
+  4. Review compression logs for HLS errors
+  5. Check FFmpeg permissions
+
+Issue: Slow compression
+Solution:
+  1. Check CPU usage
+  2. Check concurrent jobs limit
+  3. Reduce compression quality
+  4. Check network bandwidth
+  5. Monitor disk I/O
+
+Issue: Out of disk space
+Solution:
+  1. Increase disk allocation in Coolify
+  2. Reduce MAX_FILE_SIZE limit
+  3. Implement automatic cleanup of old files
+  4. Monitor temp directory size
+
+Issue: Scheduled compression not running
+Solution:
+  1. Verify scheduler is running
+  2. Check scheduled time is set correctly
+  3. Check database for scheduled jobs
+  4. Review scheduler logs
+  5. Manually trigger scheduler if needed
+
+Issue: Image compression fails
+Solution:
+  1. Check image format is supported
+  2. Check file size is under MAX_IMAGE_FILE_SIZE
+  3. Check ImageMagick is installed
+  4. Check disk space available
+  5. Review error logs
+
+Issue: Image variants not generated
+Solution:
+  1. Verify ImageMagick is installed
+  2. Check variant settings
+  3. Check disk space for variant files
+  4. Review compression logs for errors
+  5. Check ImageMagick permissions
+
+Issue: Combined compression (video + image) fails
+Solution:
+  1. Check both video and image formats are supported
+  2. Check both file sizes are under limits
+  3. Check disk space for both types
+  4. Review error logs for which type failed
+  5. Try compressing each type separately
+
+================================================================================
+15. MAINTENANCE
+================================================================================
+
+Daily:
+- Check error logs
+- Monitor disk space
+- Verify health endpoint
+- Monitor queue depth
+- Check compression success rate
+
+Weekly:
+- Review compression metrics
+- Check response times
+- Review security logs
+- Analyze compression ratios
+- Check for failed jobs
+
+Monthly:
+- Update Go dependencies
+- Review and optimize compression settings
+- Analyze compression ratios (by type)
+- Plan capacity upgrades if needed
+- Clean up old job records from database
+- Optimize database indexes
+- Review image quality presets for optimization
+- Review video quality presets for optimization
