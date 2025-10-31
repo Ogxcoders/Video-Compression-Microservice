@@ -1,2 +1,26 @@
+modules = ["go-1.24"]
 [agent]
 expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "build-verification"
+
+[[workflows.workflow]]
+name = "build-verification"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🔍 Build Verification Workflow\" && echo \"\" && echo \"This is a Docker Compose project designed for VPS deployment via Coolify.\" && echo \"Full application requires: Redis, PostgreSQL, FFmpeg, ImageMagick\" && echo \"\" && echo \"Verifying Go code compiles...\" && go mod tidy && go build -o /tmp/api-binary ./cmd/api && echo \"\" && echo \"✅ Build successful! Binary compiled without errors.\" && echo \"\" && echo \"📦 Next steps:\" && echo \"1. Commit the updated go.sum file\" && echo \"2. Push to your repository\" && echo \"3. Redeploy via Coolify\" && echo \"\" && echo \"Note: Full integration testing happens on your VPS with Docker Compose.\""
+
+[workflows.workflow.metadata]
+outputType = "console"

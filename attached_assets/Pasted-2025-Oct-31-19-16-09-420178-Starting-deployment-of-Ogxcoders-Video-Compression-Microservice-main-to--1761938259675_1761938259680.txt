@@ -1,0 +1,541 @@
+2025-Oct-31 19:16:09.420178
+Starting deployment of Ogxcoders/Video-Compression-Microservice:main to ogvid.
+2025-Oct-31 19:16:10.290140
+Preparing container with helper image: ghcr.io/coollabsio/coolify-helper:1.0.11
+2025-Oct-31 19:16:13.041465
+----------------------------------------
+2025-Oct-31 19:16:13.070154
+Importing Ogxcoders/Video-Compression-Microservice:main (commit sha bafb8aa3dd6fb3f8e18e11d3cf753a0068d56671) to /artifacts/ik80og0cgs0k4owwgoko4s4c.
+2025-Oct-31 19:16:16.711135
+Image not found (d4os4gs4kcskwcggww40c888:bafb8aa3dd6fb3f8e18e11d3cf753a0068d56671). Building new image.
+2025-Oct-31 19:16:23.655606
+----------------------------------------
+2025-Oct-31 19:16:23.703198
+Building docker image started.
+2025-Oct-31 19:16:23.735003
+To check the current progress, click on Show Debug Logs.
+2025-Oct-31 19:16:46.904246
+Oops something is not okay, are you okay? 😢
+2025-Oct-31 19:16:46.933711
+#0 building with "default" instance using docker driver
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#1 [internal] load build definition from Dockerfile
+2025-Oct-31 19:16:46.933711
+#1 transferring dockerfile: 804B done
+2025-Oct-31 19:16:46.933711
+#1 DONE 0.1s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#2 [internal] load metadata for docker.io/library/golang:1.21-alpine
+2025-Oct-31 19:16:46.933711
+#2 ...
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#3 [internal] load metadata for docker.io/library/alpine:latest
+2025-Oct-31 19:16:46.933711
+#3 DONE 0.5s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#2 [internal] load metadata for docker.io/library/golang:1.21-alpine
+2025-Oct-31 19:16:46.933711
+#2 DONE 0.5s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#4 [internal] load .dockerignore
+2025-Oct-31 19:16:46.933711
+#4 transferring context: 2B done
+2025-Oct-31 19:16:46.933711
+#4 DONE 0.0s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#5 [stage-1 1/5] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412
+2025-Oct-31 19:16:46.933711
+#5 resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412 0.0s done
+2025-Oct-31 19:16:46.933711
+#5 sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412 9.22kB / 9.22kB done
+2025-Oct-31 19:16:46.933711
+#5 sha256:85f2b723e106c34644cd5851d7e81ee87da98ac54672b29947c052a45d31dc2f 1.02kB / 1.02kB done
+2025-Oct-31 19:16:46.933711
+#5 sha256:706db57fb2063f39f69632c5b5c9c439633fda35110e65587c5d85553fd1cc38 581B / 581B done
+2025-Oct-31 19:16:46.933711
+#5 DONE 0.1s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#6 [internal] load build context
+2025-Oct-31 19:16:46.933711
+#6 transferring context: 562.30kB 0.0s done
+2025-Oct-31 19:16:46.933711
+#6 DONE 0.1s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#7 [builder 1/7] FROM docker.io/library/golang:1.21-alpine@sha256:2414035b086e3c42b99654c8b26e6f5b1b1598080d65fd03c7f499552ff4dc94
+2025-Oct-31 19:16:46.933711
+#7 resolve docker.io/library/golang:1.21-alpine@sha256:2414035b086e3c42b99654c8b26e6f5b1b1598080d65fd03c7f499552ff4dc94 0.0s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:c2321c7cf7210be837249dba0f3699fad6ddbb5718e70344b28c0d58feff4c0b 2.10kB / 2.10kB done
+2025-Oct-31 19:16:46.933711
+#7 sha256:c6a83fedfae6ed8a4f5f7cbb6a7b6f1c1ec3d86fea8cb9e5ba2e5e6673fde9f6 0B / 3.62MB 0.1s
+2025-Oct-31 19:16:46.933711
+#7 sha256:41db7493d1c6f3f26428d119962e3862c14a9e20bb0b8fefc36e7282d015d099 0B / 290.89kB 0.1s
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 0B / 67.01MB 0.1s
+2025-Oct-31 19:16:46.933711
+#7 sha256:2414035b086e3c42b99654c8b26e6f5b1b1598080d65fd03c7f499552ff4dc94 10.30kB / 10.30kB done
+2025-Oct-31 19:16:46.933711
+#7 sha256:8ee9b9e11ef79e314a7584040451a6df8e72a66712e741bf75951e05e587404e 1.92kB / 1.92kB done
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:c6a83fedfae6ed8a4f5f7cbb6a7b6f1c1ec3d86fea8cb9e5ba2e5e6673fde9f6
+2025-Oct-31 19:16:46.933711
+#7 sha256:c6a83fedfae6ed8a4f5f7cbb6a7b6f1c1ec3d86fea8cb9e5ba2e5e6673fde9f6 3.62MB / 3.62MB 0.2s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:41db7493d1c6f3f26428d119962e3862c14a9e20bb0b8fefc36e7282d015d099 61.44kB / 290.89kB 0.2s
+2025-Oct-31 19:16:46.933711
+#7 sha256:4579008f8500d429ec007d092329191009711942d9380d060c8d9bd24c0c352c 0B / 126B 0.2s
+2025-Oct-31 19:16:46.933711
+#7 sha256:41db7493d1c6f3f26428d119962e3862c14a9e20bb0b8fefc36e7282d015d099 290.89kB / 290.89kB 0.2s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 11.53MB / 67.01MB 0.4s
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:c6a83fedfae6ed8a4f5f7cbb6a7b6f1c1ec3d86fea8cb9e5ba2e5e6673fde9f6 0.2s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:4579008f8500d429ec007d092329191009711942d9380d060c8d9bd24c0c352c 126B / 126B 0.3s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 0.3s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 16.78MB / 67.01MB 0.5s
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:41db7493d1c6f3f26428d119962e3862c14a9e20bb0b8fefc36e7282d015d099
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 27.26MB / 67.01MB 0.7s
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:41db7493d1c6f3f26428d119962e3862c14a9e20bb0b8fefc36e7282d015d099 0.1s done
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 33.55MB / 67.01MB 0.8s
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 48.23MB / 67.01MB 1.0s
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 62.91MB / 67.01MB 1.2s
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 67.01MB / 67.01MB 1.3s
+2025-Oct-31 19:16:46.933711
+#7 sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 67.01MB / 67.01MB 1.4s done
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 0.1s
+2025-Oct-31 19:16:46.933711
+#7 ...
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#8 [stage-1 2/5] RUN apk add --no-cache     ffmpeg     imagemagick     ca-certificates     tzdata
+2025-Oct-31 19:16:46.933711
+#8 0.166 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/x86_64/APKINDEX.tar.gz
+2025-Oct-31 19:16:46.933711
+#8 0.418 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/x86_64/APKINDEX.tar.gz
+2025-Oct-31 19:16:46.933711
+#8 1.419 (1/122) Installing ca-certificates (20250911-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.497 (2/122) Installing libSvtAv1Enc (2.3.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.670 (3/122) Installing aom-libs (3.12.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.788 (4/122) Installing libxau (1.0.12-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.793 (5/122) Installing libmd (1.1.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.798 (6/122) Installing libbsd (0.12.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.803 (7/122) Installing libxdmcp (1.1.5-r1)
+2025-Oct-31 19:16:46.933711
+#8 1.808 (8/122) Installing libxcb (1.17.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.831 (9/122) Installing libx11 (1.8.11-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.907 (10/122) Installing hwdata-pci (0.395-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.930 (11/122) Installing libpciaccess (0.18.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.936 (12/122) Installing libdrm (2.4.124-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.952 (13/122) Installing libxext (1.3.6-r2)
+2025-Oct-31 19:16:46.933711
+#8 1.956 (14/122) Installing libxfixes (6.0.1-r4)
+2025-Oct-31 19:16:46.933711
+#8 1.962 (15/122) Installing libffi (3.4.8-r0)
+2025-Oct-31 19:16:46.933711
+#8 1.966 (16/122) Installing wayland-libs-client (1.23.1-r3)
+2025-Oct-31 19:16:46.933711
+#8 1.972 (17/122) Installing libva (2.22.0-r1)
+2025-Oct-31 19:16:46.933711
+#8 1.983 (18/122) Installing libvdpau (1.5-r4)
+2025-Oct-31 19:16:46.933711
+#8 1.988 (19/122) Installing libgcc (14.2.0-r6)
+2025-Oct-31 19:16:46.933711
+#8 1.996 (20/122) Installing libstdc++ (14.2.0-r6)
+2025-Oct-31 19:16:46.933711
+#8 2.039 (21/122) Installing onevpl-libs (2023.3.1-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.047 (22/122) Installing ffmpeg-libavutil (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.070 (23/122) Installing libdav1d (1.5.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.096 (24/122) Installing openexr-libiex (3.3.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.105 (25/122) Installing openexr-libilmthread (3.3.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.109 (26/122) Installing imath (3.1.12-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.120 (27/122) Installing libdeflate (1.23-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.127 (28/122) Installing openexr-libopenexrcore (3.3.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.163 (29/122) Installing openexr-libopenexr (3.3.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.184 (30/122) Installing brotli-libs (1.1.0-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.203 (31/122) Installing giflib (5.2.2-r1)
+2025-Oct-31 19:16:46.933711
+#8 2.207 (32/122) Installing libhwy (1.0.7-r1)
+2025-Oct-31 19:16:46.933711
+#8 2.214 (33/122) Installing libjpeg-turbo (3.1.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.229 (34/122) Installing lcms2 (2.16-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.251 (35/122) Installing libpng (1.6.47-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.260 (36/122) Installing libjxl (0.10.3-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.338 (37/122) Installing lame-libs (3.100-r5)
+2025-Oct-31 19:16:46.933711
+#8 2.348 (38/122) Installing opus (1.5.2-r1)
+2025-Oct-31 19:16:46.933711
+#8 2.360 (39/122) Installing rav1e-libs (0.7.1-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.400 (40/122) Installing libgomp (14.2.0-r6)
+2025-Oct-31 19:16:46.933711
+#8 2.410 (41/122) Installing soxr (0.1.3-r7)
+2025-Oct-31 19:16:46.933711
+#8 2.418 (42/122) Installing ffmpeg-libswresample (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.425 (43/122) Installing libogg (1.3.5-r5)
+2025-Oct-31 19:16:46.933711
+#8 2.431 (44/122) Installing libtheora (1.1.1-r18)
+2025-Oct-31 19:16:46.933711
+#8 2.446 (45/122) Installing libvorbis (1.3.7-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.465 (46/122) Installing libvpx (1.15.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.517 (47/122) Installing libsharpyuv (1.5.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.520 (48/122) Installing libwebp (1.5.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.535 (49/122) Installing libwebpmux (1.5.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.539 (50/122) Installing x264-libs (0.164.3108-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.577 (51/122) Installing numactl (2.0.18-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.582 (52/122) Installing x265-libs (3.6-r0)
+2025-Oct-31 19:16:46.933711
+#8 2.784 (53/122) Installing xvidcore (1.3.7-r2)
+2025-Oct-31 19:16:46.933711
+#8 2.794 (54/122) Installing ffmpeg-libavcodec (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.015 (55/122) Installing sdl3 (3.2.16-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.048 (56/122) Installing sdl2-compat (2.32.56-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.057 (57/122) Installing alsa-lib (1.2.14-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.093 (58/122) Installing libexpat (2.7.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.098 (59/122) Installing libbz2 (1.0.8-r6)
+2025-Oct-31 19:16:46.933711
+#8 3.101 (60/122) Installing freetype (2.13.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.118 (61/122) Installing fontconfig (2.15.0-r3)
+2025-Oct-31 19:16:46.933711
+#8 3.153 (62/122) Installing fribidi (1.0.16-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.158 (63/122) Installing libintl (0.24.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.163 (64/122) Installing libeconf (0.6.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.168 (65/122) Installing libblkid (2.41-r9)
+2025-Oct-31 19:16:46.933711
+#8 3.175 (66/122) Installing libmount (2.41-r9)
+2025-Oct-31 19:16:46.933711
+#8 3.183 (67/122) Installing pcre2 (10.46-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.201 (68/122) Installing glib (2.84.4-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.279 (69/122) Installing graphite2 (1.3.14-r6)
+2025-Oct-31 19:16:46.933711
+#8 3.284 (70/122) Installing harfbuzz (11.2.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.309 (71/122) Installing libunibreak (6.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.315 (72/122) Installing libass (0.17.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.321 (73/122) Installing libbluray (1.3.4-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.334 (74/122) Installing mpg123-libs (1.32.10-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.345 (75/122) Installing libopenmpt (0.7.15-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.366 (76/122) Installing cjson (1.7.19-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.370 (77/122) Installing mbedtls (3.6.5-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.385 (78/122) Installing librist (0.2.10-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.392 (79/122) Installing libsrt (1.5.3-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.410 (80/122) Installing libssh (0.11.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.423 (81/122) Installing xz-libs (5.8.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.430 (82/122) Installing libxml2 (2.13.9-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.451 (83/122) Installing libsodium (1.0.20-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.463 (84/122) Installing libzmq (4.3.5-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.477 (85/122) Installing ffmpeg-libavformat (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.529 (86/122) Installing serd-libs (0.32.4-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.531 (87/122) Installing zix-libs (0.6.2-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.536 (88/122) Installing sord-libs (0.16.18-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.541 (89/122) Installing sratom (0.6.18-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.545 (90/122) Installing lilv-libs (0.24.26-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.551 (91/122) Installing libdovi (3.3.1-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.580 (92/122) Installing spirv-tools (1.4.313.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.655 (93/122) Installing glslang-libs (1.4.309.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.690 (94/122) Installing shaderc (2024.4-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.697 (95/122) Installing vulkan-loader (1.4.313.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.710 (96/122) Installing libplacebo (6.338.2-r3)
+2025-Oct-31 19:16:46.933711
+#8 3.729 (97/122) Installing ffmpeg-libpostproc (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.735 (98/122) Installing ffmpeg-libswscale (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.746 (99/122) Installing vidstab (1.1.1-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.750 (100/122) Installing zimg (3.0.5-r3)
+2025-Oct-31 19:16:46.933711
+#8 3.766 (101/122) Installing ffmpeg-libavfilter (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.835 (102/122) Installing libasyncns (0.8-r4)
+2025-Oct-31 19:16:46.933711
+#8 3.839 (103/122) Installing dbus-libs (1.16.2-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.906 (104/122) Installing libltdl (2.5.4-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.910 (105/122) Installing orc (0.4.40-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.923 (106/122) Installing libflac (1.4.3-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.934 (107/122) Installing libsndfile (1.2.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.953 (108/122) Installing speexdsp (1.2.1-r2)
+2025-Oct-31 19:16:46.933711
+#8 3.959 (109/122) Installing tdb-libs (1.4.12-r0)
+2025-Oct-31 19:16:46.933711
+#8 3.964 (110/122) Installing libpulse (17.0-r5)
+2025-Oct-31 19:16:46.933711
+#8 3.989 (111/122) Installing v4l-utils-libs (1.28.1-r1)
+2025-Oct-31 19:16:46.933711
+#8 3.999 (112/122) Installing ffmpeg-libavdevice (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 4.008 (113/122) Installing ffmpeg (6.1.2-r2)
+2025-Oct-31 19:16:46.933711
+#8 4.021 (114/122) Installing fftw-double-libs (3.3.10-r6)
+2025-Oct-31 19:16:46.933711
+#8 4.054 (115/122) Installing imagemagick-libs (7.1.2.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.114 (116/122) Installing imagemagick (7.1.2.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.215 (117/122) Installing imagemagick-jpeg (7.1.2.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.215 (118/122) Installing imagemagick-openexr (7.1.2.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.220 (119/122) Installing imagemagick-jxl (7.1.2.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.223 (120/122) Installing libwebpdemux (1.5.0-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.228 (121/122) Installing imagemagick-webp (7.1.2.3-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.233 (122/122) Installing tzdata (2025b-r0)
+2025-Oct-31 19:16:46.933711
+#8 4.357 Executing busybox-1.37.0-r19.trigger
+2025-Oct-31 19:16:46.933711
+#8 4.392 Executing ca-certificates-20250911-r0.trigger
+2025-Oct-31 19:16:46.933711
+#8 4.513 Executing glib-2.84.4-r0.trigger
+2025-Oct-31 19:16:46.933711
+#8 4.526 OK: 142 MiB in 138 packages
+2025-Oct-31 19:16:46.933711
+#8 DONE 5.6s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#9 [stage-1 3/5] WORKDIR /root/
+2025-Oct-31 19:16:46.933711
+#9 DONE 0.1s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#7 [builder 1/7] FROM docker.io/library/golang:1.21-alpine@sha256:2414035b086e3c42b99654c8b26e6f5b1b1598080d65fd03c7f499552ff4dc94
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 5.2s
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:54bf7053e2d96c2c7f4637ad7580bd64345b3c9fabb163e1fdb8894aea8a9af0 7.1s done
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:4579008f8500d429ec007d092329191009711942d9380d060c8d9bd24c0c352c
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:4579008f8500d429ec007d092329191009711942d9380d060c8d9bd24c0c352c done
+2025-Oct-31 19:16:46.933711
+#7 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+2025-Oct-31 19:16:46.933711
+#7 DONE 9.2s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#10 [builder 2/7] RUN apk add --no-cache git make
+2025-Oct-31 19:16:46.933711
+#10 0.120 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+2025-Oct-31 19:16:46.933711
+#10 0.244 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+2025-Oct-31 19:16:46.933711
+#10 0.827 (1/13) Installing brotli-libs (1.1.0-r2)
+2025-Oct-31 19:16:46.933711
+#10 0.848 (2/13) Installing c-ares (1.33.1-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.855 (3/13) Installing libunistring (1.2-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.877 (4/13) Installing libidn2 (2.3.7-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.884 (5/13) Installing nghttp2-libs (1.62.1-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.890 (6/13) Installing libpsl (0.21.5-r1)
+2025-Oct-31 19:16:46.933711
+#10 0.894 (7/13) Installing zstd-libs (1.5.6-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.908 (8/13) Installing libcurl (8.14.1-r2)
+2025-Oct-31 19:16:46.933711
+#10 0.923 (9/13) Installing libexpat (2.7.3-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.929 (10/13) Installing pcre2 (10.43-r0)
+2025-Oct-31 19:16:46.933711
+#10 0.942 (11/13) Installing git (2.45.4-r0)
+2025-Oct-31 19:16:46.933711
+#10 1.228 (12/13) Installing git-init-template (2.45.4-r0)
+2025-Oct-31 19:16:46.933711
+#10 1.234 (13/13) Installing make (4.4.1-r2)
+2025-Oct-31 19:16:46.933711
+#10 1.242 Executing busybox-1.36.1-r29.trigger
+2025-Oct-31 19:16:46.933711
+#10 1.264 OK: 20 MiB in 28 packages
+2025-Oct-31 19:16:46.933711
+#10 DONE 1.8s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#11 [builder 3/7] WORKDIR /app
+2025-Oct-31 19:16:46.933711
+#11 DONE 0.0s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#12 [builder 4/7] COPY go.mod go.sum ./
+2025-Oct-31 19:16:46.933711
+#12 DONE 0.0s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#13 [builder 5/7] RUN go mod download
+2025-Oct-31 19:16:46.933711
+#13 DONE 9.0s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#14 [builder 6/7] COPY . .
+2025-Oct-31 19:16:46.933711
+#14 DONE 0.1s
+2025-Oct-31 19:16:46.933711
+2025-Oct-31 19:16:46.933711
+#15 [builder 7/7] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
+2025-Oct-31 19:16:46.933711
+#15 0.398 cmd/api/main.go:9:2: missing go.sum entry for module providing package github.com/gin-gonic/gin (imported by github.com/yourusername/video-compressor/cmd/api); to add:
+2025-Oct-31 19:16:46.933711
+#15 0.398 	go get github.com/yourusername/video-compressor/cmd/api
+2025-Oct-31 19:16:46.933711
+#15 0.398 internal/database/database.go:9:2: missing go.sum entry for module providing package github.com/lib/pq (imported by github.com/yourusername/video-compressor/internal/database); to add:
+2025-Oct-31 19:16:46.933711
+#15 0.398 	go get github.com/yourusername/video-compressor/internal/database
+2025-Oct-31 19:16:46.933711
+#15 0.399 internal/handlers/compress.go:7:2: missing go.sum entry for module providing package github.com/google/uuid (imported by github.com/yourusername/video-compressor/internal/handlers); to add:
+2025-Oct-31 19:16:46.933711
+#15 0.399 	go get github.com/yourusername/video-compressor/internal/handlers
+2025-Oct-31 19:16:46.933711
+#15 0.399 internal/queue/redis.go:9:2: missing go.sum entry for module providing package github.com/go-redis/redis/v8 (imported by github.com/yourusername/video-compressor/internal/queue); to add:
+2025-Oct-31 19:16:46.933711
+#15 0.399 	go get github.com/yourusername/video-compressor/internal/queue
+2025-Oct-31 19:16:46.933711
+#15 0.399 pkg/config/config.go:9:2: missing go.sum entry for module providing package github.com/joho/godotenv (imported by github.com/yourusername/video-compressor/pkg/config); to add:
+2025-Oct-31 19:16:46.933711
+#15 0.399 	go get github.com/yourusername/video-compressor/pkg/config
+2025-Oct-31 19:16:46.933711
+#15 ERROR: process "/bin/sh -c CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api" did not complete successfully: exit code: 1
+2025-Oct-31 19:16:46.933711
+------
+2025-Oct-31 19:16:46.933711
+> [builder 7/7] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api:
+2025-Oct-31 19:16:46.933711
+0.398 cmd/api/main.go:9:2: missing go.sum entry for module providing package github.com/gin-gonic/gin (imported by github.com/yourusername/video-compressor/cmd/api); to add:
+2025-Oct-31 19:16:46.933711
+0.398 	go get github.com/yourusername/video-compressor/cmd/api
+2025-Oct-31 19:16:46.933711
+0.398 internal/database/database.go:9:2: missing go.sum entry for module providing package github.com/lib/pq (imported by github.com/yourusername/video-compressor/internal/database); to add:
+2025-Oct-31 19:16:46.933711
+0.398 	go get github.com/yourusername/video-compressor/internal/database
+2025-Oct-31 19:16:46.933711
+0.399 internal/handlers/compress.go:7:2: missing go.sum entry for module providing package github.com/google/uuid (imported by github.com/yourusername/video-compressor/internal/handlers); to add:
+2025-Oct-31 19:16:46.933711
+0.399 	go get github.com/yourusername/video-compressor/internal/handlers
+2025-Oct-31 19:16:46.933711
+0.399 internal/queue/redis.go:9:2: missing go.sum entry for module providing package github.com/go-redis/redis/v8 (imported by github.com/yourusername/video-compressor/internal/queue); to add:
+2025-Oct-31 19:16:46.933711
+0.399 	go get github.com/yourusername/video-compressor/internal/queue
+2025-Oct-31 19:16:46.933711
+0.399 pkg/config/config.go:9:2: missing go.sum entry for module providing package github.com/joho/godotenv (imported by github.com/yourusername/video-compressor/pkg/config); to add:
+2025-Oct-31 19:16:46.933711
+0.399 	go get github.com/yourusername/video-compressor/pkg/config
+2025-Oct-31 19:16:46.933711
+------
+2025-Oct-31 19:16:46.933711
+Dockerfile:18
+2025-Oct-31 19:16:46.933711
+--------------------
+2025-Oct-31 19:16:46.933711
+16 |     COPY . .
+2025-Oct-31 19:16:46.933711
+17 |
+2025-Oct-31 19:16:46.933711
+18 | >>> RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
+2025-Oct-31 19:16:46.933711
+19 |
+2025-Oct-31 19:16:46.933711
+20 |     FROM alpine:latest
+2025-Oct-31 19:16:46.933711
+--------------------
+2025-Oct-31 19:16:46.933711
+ERROR: failed to build: failed to solve: process "/bin/sh -c CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api" did not complete successfully: exit code: 1
+2025-Oct-31 19:16:46.933711
+exit status 1
+2025-Oct-31 19:16:46.975441
+Deployment failed. Removing the new version of your application.
+2025-Oct-31 19:16:49.250874
+Gracefully shutting down build container: ik80og0cgs0k4owwgoko4s4c
