@@ -1,0 +1,53 @@
+═══════════════════════════════════════════════════════════════════════════
+  COOLIFY DEPLOYMENT - COPY & PASTE ENVIRONMENT VARIABLES
+═══════════════════════════════════════════════════════════════════════════
+
+STEP 1: In Coolify, go to your project → Environment Variables tab
+
+STEP 2: Copy-paste ALL of these variables (one per line):
+
+API_KEY=sk_test_4f9b2c8a1e6d3f7a9b2c8e1d6f3a7b9c2e8d1f6a3b7c9e2d8f1a6b3c7e9d2f8a1
+ALLOWED_DOMAINS=https://capcut.ogtemplate.com/,https://ogtemplate.com/
+PORT=3000
+LOG_LEVEL=info
+MAX_VIDEO_FILE_SIZE=5000000000
+MAX_IMAGE_FILE_SIZE=500000000
+TEMP_DIR=/tmp/compression
+REDIS_URL=redis://redis:6379
+DATABASE_URL=postgres://compressor:compressor_secure_pw_9x8c7v6b5n4m3@db:5432/compression?sslmode=disable
+MAX_CONCURRENT_JOBS=5
+JOB_TIMEOUT=3600
+QUEUE_CHECK_INTERVAL=5
+FFMPEG_PATH=/usr/bin/ffmpeg
+IMAGEMAGICK_PATH=/usr/bin/convert
+WORDPRESS_API_URL=https://capcut.ogtemplate.com/wp-json/wp/v2
+WORDPRESS_USERNAME=vps
+WORDPRESS_APP_PASSWORD=bisf lAxw AsTk Jm2t ytUb 3ENg
+RATE_LIMIT_REQUESTS_PER_MINUTE=10
+RATE_LIMIT_MAX_CONCURRENT=100
+RATE_LIMIT_MAX_JOBS_PER_DAY=1000
+MAX_RETRIES=3
+RETRY_BACKOFF_SECONDS=60,300,900
+POSTGRES_DB=compression
+POSTGRES_USER=compressor
+POSTGRES_PASSWORD=compressor_secure_pw_9x8c7v6b5n4m3
+
+STEP 3: Configure deployment settings in Coolify:
+   - Docker Compose File Path: docker-compose.coolify.yml
+   - Port: 3000
+   - Domain: https://api.trendss.net
+
+STEP 4: Click "Deploy" button
+
+═══════════════════════════════════════════════════════════════════════════
+  IMPORTANT NOTES
+═══════════════════════════════════════════════════════════════════════════
+
+✓ Use docker-compose.coolify.yml (NOT docker-compose.yml)
+✓ Coolify handles reverse proxy - no nginx needed
+✓ All environment variables MUST be added in Coolify UI
+✓ After deployment, check logs for "Connected to PostgreSQL database"
+
+Your API will be available at: https://api.trendss.net/
+
+═══════════════════════════════════════════════════════════════════════════

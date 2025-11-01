@@ -33,7 +33,7 @@ services:
       - redis
       - db
     volumes:
-      - ./tmp:/tmp/compression
+      - compressor-tmp:/tmp/compression
     restart: unless-stopped
     networks:
       - compressor-network
@@ -41,8 +41,6 @@ services:
   redis:
     image: redis:7-alpine
     container_name: compressor-redis
-    ports:
-      - "6379:6379"
     volumes:
       - redis-data:/data
     restart: unless-stopped
@@ -56,8 +54,6 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-compression}
       - POSTGRES_USER=${POSTGRES_USER:-compressor}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    ports:
-      - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -65,24 +61,10 @@ services:
     networks:
       - compressor-network
 
-  nginx:
-    image: nginx:alpine
-    container_name: compressor-nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro
-    depends_on:
-      - app
-    restart: unless-stopped
-    networks:
-      - compressor-network
-
 volumes:
   redis-data:
   postgres-data:
+  compressor-tmp:
 
 networks:
   compressor-network:
