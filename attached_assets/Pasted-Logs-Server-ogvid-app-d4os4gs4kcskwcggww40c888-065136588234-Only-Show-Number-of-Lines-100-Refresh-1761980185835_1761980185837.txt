@@ -1,0 +1,168 @@
+Logs
+Server: ogvid
+app-d4os4gs4kcskwcggww40c888-065136588234
+Only Show Number of Lines
+*
+100
+Refresh
+Stream Logs
+Include Timestamps
+
+2025/11/01 06:52:45 WARNING: API_KEY is not set
+2025/11/01 06:52:45 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:45 DATABASE_URL is required
+2025/11/01 06:52:46 WARNING: API_KEY is not set
+2025/11/01 06:52:46 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:46 DATABASE_URL is required
+2025/11/01 06:52:47 WARNING: API_KEY is not set
+2025/11/01 06:52:47 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:47 DATABASE_URL is required
+2025/11/01 06:52:48 WARNING: API_KEY is not set
+2025/11/01 06:52:48 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:48 DATABASE_URL is required
+2025/11/01 06:52:50 WARNING: API_KEY is not set
+2025/11/01 06:52:50 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:50 DATABASE_URL is required
+2025/11/01 06:52:52 WARNING: API_KEY is not set
+2025/11/01 06:52:52 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:52 DATABASE_URL is required
+2025/11/01 06:52:55 WARNING: API_KEY is not set
+2025/11/01 06:52:55 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:52:55 DATABASE_URL is required
+2025/11/01 06:53:02 WARNING: API_KEY is not set
+2025/11/01 06:53:02 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:53:02 DATABASE_URL is required
+2025/11/01 06:53:15 WARNING: API_KEY is not set
+2025/11/01 06:53:15 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:53:15 DATABASE_URL is required
+2025/11/01 06:53:41 WARNING: API_KEY is not set
+2025/11/01 06:53:41 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:53:41 DATABASE_URL is required
+redis-d4os4gs4kcskwcggww40c888-065136865839
+Only Show Number of Lines
+*
+100
+Refresh
+Stream Logs
+Include Timestamps
+
+1:C 01 Nov 2025 06:52:44.899 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:C 01 Nov 2025 06:52:44.899 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 01 Nov 2025 06:52:44.899 * Redis version=7.4.6, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 01 Nov 2025 06:52:44.899 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 01 Nov 2025 06:52:44.900 * monotonic clock: POSIX clock_gettime
+1:M 01 Nov 2025 06:52:44.903 * Running mode=standalone, port=6379.
+1:M 01 Nov 2025 06:52:44.904 * Server initialized
+1:M 01 Nov 2025 06:52:44.904 * Loading RDB produced by version 7.4.6
+1:M 01 Nov 2025 06:52:44.904 * RDB age 4 seconds
+1:M 01 Nov 2025 06:52:44.904 * RDB memory usage when created 0.93 Mb
+1:M 01 Nov 2025 06:52:44.904 * Done loading RDB, keys loaded: 0, keys expired: 0.
+1:M 01 Nov 2025 06:52:44.904 * DB loaded from disk: 0.000 seconds
+1:M 01 Nov 2025 06:52:44.904 * Ready to accept connections tcp
+db-d4os4gs4kcskwcggww40c888-065137020119
+Only Show Number of Lines
+*
+100
+Refresh
+Stream Logs
+Include Timestamps
+
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html
+Error: Database is uninitialized and superuser password is not specified.
+       You must specify POSTGRES_PASSWORD to a non-empty value for the
+       superuser. For example, "-e POSTGRES_PASSWORD=password" on "docker run".
+
+       You may also use "POSTGRES_HOST_AUTH_METHOD=trust" to allow all
+       connections without a password. This is *not* recommended.
+
+       See PostgreSQL documentation about "trust":
+       https://www.postgresql.org/docs/current/auth-trust.html

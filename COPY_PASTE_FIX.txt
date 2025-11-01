@@ -1,0 +1,122 @@
+════════════════════════════════════════════════════════════════
+  COOLIFY FIX - FOLLOW THESE 3 STEPS EXACTLY
+════════════════════════════════════════════════════════════════
+
+YOUR ISSUES:
+✗ PostgreSQL error: "POSTGRES_PASSWORD is not specified"
+✗ App error: "API_KEY is not set", "DATABASE_URL is required"
+✗ Domain api.trendss.net not working
+
+════════════════════════════════════════════════════════════════
+STEP 1: ADD ENVIRONMENT VARIABLES IN COOLIFY
+════════════════════════════════════════════════════════════════
+
+Go to: Your Application → Environment Variables Tab
+
+Click "+ Add" for EACH variable below:
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: API_KEY                                                 │
+│ Value: sk_test_4f9b2c8a1e6d3f7a9b2c8e1d6f3a7b9c2e8d1f6a3b7c9e2d8f1a6b3c7e9d2f8a1 │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: ALLOWED_DOMAINS                                         │
+│ Value: https://capcut.ogtemplate.com/,https://ogtemplate.com/ │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: DATABASE_URL                                            │
+│ Value: postgres://compressor:compressor_secure_pw_9x8c7v6b5n4m3@db:5432/compression?sslmode=disable │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: POSTGRES_PASSWORD                                       │
+│ Value: compressor_secure_pw_9x8c7v6b5n4m3                   │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: WORDPRESS_API_URL                                       │
+│ Value: https://capcut.ogtemplate.com/wp-json/wp/v2          │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: WORDPRESS_USERNAME                                      │
+│ Value: vps                                                   │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ Key: WORDPRESS_APP_PASSWORD                                  │
+│ Value: bisf lAxw AsTk Jm2t ytUb 3ENg                        │
+│ Build Variable?: [ ] NO - Leave unchecked                   │
+└─────────────────────────────────────────────────────────────┘
+
+════════════════════════════════════════════════════════════════
+STEP 2: SETUP DOMAIN
+════════════════════════════════════════════════════════════════
+
+A. DNS Configuration (Your Domain Registrar):
+   1. Go to your DNS settings for trendss.net
+   2. Add A Record:
+      - Name: api
+      - Type: A
+      - Value: YOUR_COOLIFY_SERVER_IP_ADDRESS
+      - TTL: 300 (or Auto)
+
+B. Coolify Domain Settings:
+   1. Go to: Your Application → Domains/Settings
+   2. Enter domain: https://api.trendss.net
+      ⚠️ MUST include "https://" prefix!
+   3. Set Port: 3000
+   4. Save
+
+C. Check Proxy:
+   1. Go to: Dashboard → Servers → Your Server → Proxy
+   2. If stopped, click "Start Proxy"
+
+════════════════════════════════════════════════════════════════
+STEP 3: REDEPLOY
+════════════════════════════════════════════════════════════════
+
+1. Make sure Docker Compose file is: docker-compose.coolify.yml
+2. Click "Redeploy" or "Force Rebuild"
+3. Wait 2-3 minutes for:
+   - All 3 containers to start
+   - SSL certificate generation
+
+════════════════════════════════════════════════════════════════
+VERIFY SUCCESS
+════════════════════════════════════════════════════════════════
+
+Check Logs - You should see:
+✓ App: "Connected to PostgreSQL database"
+✓ PostgreSQL: "database system is ready to accept connections"
+✓ Redis: "Ready to accept connections"
+
+Check Domain:
+✓ Open: https://api.trendss.net/health
+✓ Should load without errors
+
+NO MORE ERRORS:
+✗ No "API_KEY is not set"
+✗ No "DATABASE_URL is required"
+✗ No "POSTGRES_PASSWORD" errors
+
+════════════════════════════════════════════════════════════════
+IMPORTANT NOTES
+════════════════════════════════════════════════════════════════
+
+✓ ALL variables must be added in Coolify UI (not in .env file)
+✓ Do NOT check "Build Variable?" for any of them
+✓ Domain MUST start with "https://" in Coolify
+✓ DNS A record MUST point to your Coolify server IP
+✓ Ports 80 and 443 must be open in firewall
+✓ Wait 5-10 minutes if DNS was just updated
+
+════════════════════════════════════════════════════════════════
