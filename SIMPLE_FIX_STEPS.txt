@@ -1,0 +1,61 @@
+════════════════════════════════════════════════════════════════
+  SIMPLE FIX - DO THIS IN COOLIFY NOW
+════════════════════════════════════════════════════════════════
+
+YOUR PROBLEM:
+Coolify is only deploying the app, NOT the database and Redis.
+That's why you get "DATABASE_URL is required" errors.
+
+THE FIX (3 steps):
+
+════════════════════════════════════════════════════════════════
+STEP 1: CHANGE BUILD PACK TO DOCKER COMPOSE
+════════════════════════════════════════════════════════════════
+
+In Coolify:
+1. Go to your application
+2. Click "General" or "Configuration" tab
+3. Look for "Build Pack" or "Source Type"
+4. Change it from "Dockerfile" to "Docker Compose"
+5. Set Docker Compose file path to: docker-compose.coolify.yml
+
+════════════════════════════════════════════════════════════════
+STEP 2: ADD THESE ENVIRONMENT VARIABLES
+════════════════════════════════════════════════════════════════
+
+In Coolify → Environment Variables tab, add:
+
+API_KEY=sk_test_4f9b2c8a1e6d3f7a9b2c8e1d6f3a7b9c2e8d1f6a3b7c9e2d8f1a6b3c7e9d2f8a1
+ALLOWED_DOMAINS=https://capcut.ogtemplate.com/,https://ogtemplate.com/
+DATABASE_URL=postgres://compressor:compressor_secure_pw_9x8c7v6b5n4m3@db:5432/compression?sslmode=disable
+WORDPRESS_API_URL=https://capcut.ogtemplate.com/wp-json/wp/v2
+WORDPRESS_USERNAME=vps
+WORDPRESS_APP_PASSWORD=bisf lAxw AsTk Jm2t ytUb 3ENg
+POSTGRES_PASSWORD=compressor_secure_pw_9x8c7v6b5n4m3
+
+⚠️ IMPORTANT: Do NOT check "Build Variable?" for any of these!
+
+════════════════════════════════════════════════════════════════
+STEP 3: DEPLOY
+════════════════════════════════════════════════════════════════
+
+1. Click "Redeploy" or "Deploy" button
+2. Wait for deployment to finish
+3. You should see 3 containers running:
+   - compressor-api (your app)
+   - compressor-db (PostgreSQL)
+   - compressor-redis (Redis)
+
+════════════════════════════════════════════════════════════════
+WHAT YOU'LL SEE AFTER SUCCESS
+════════════════════════════════════════════════════════════════
+
+✓ No more "DATABASE_URL is required" errors
+✓ No more "API_KEY is not set" warnings
+✓ Logs show: "Connected to PostgreSQL database"
+✓ Your API works at: https://api.trendss.net/
+
+════════════════════════════════════════════════════════════════
+
+That's it! The key is changing from Dockerfile to Docker Compose mode
+so that all 3 containers (app, database, redis) get deployed together.

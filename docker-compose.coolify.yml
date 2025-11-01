@@ -2,36 +2,40 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: compressor-api
     ports:
       - "3000:3000"
     environment:
       - API_KEY=${API_KEY}
       - ALLOWED_DOMAINS=${ALLOWED_DOMAINS}
-      - PORT=${PORT:-3000}
-      - LOG_LEVEL=${LOG_LEVEL:-info}
-      - MAX_VIDEO_FILE_SIZE=${MAX_VIDEO_FILE_SIZE:-5000000000}
-      - MAX_IMAGE_FILE_SIZE=${MAX_IMAGE_FILE_SIZE:-500000000}
-      - TEMP_DIR=${TEMP_DIR:-/tmp/compression}
-      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - PORT=3000
+      - LOG_LEVEL=info
+      - MAX_VIDEO_FILE_SIZE=5000000000
+      - MAX_IMAGE_FILE_SIZE=500000000
+      - TEMP_DIR=/tmp/compression
+      - REDIS_URL=redis://redis:6379
       - DATABASE_URL=${DATABASE_URL}
-      - MAX_CONCURRENT_JOBS=${MAX_CONCURRENT_JOBS:-5}
-      - JOB_TIMEOUT=${JOB_TIMEOUT:-3600}
-      - QUEUE_CHECK_INTERVAL=${QUEUE_CHECK_INTERVAL:-5}
-      - FFMPEG_PATH=${FFMPEG_PATH:-/usr/bin/ffmpeg}
-      - IMAGEMAGICK_PATH=${IMAGEMAGICK_PATH:-/usr/bin/convert}
+      - MAX_CONCURRENT_JOBS=5
+      - JOB_TIMEOUT=3600
+      - QUEUE_CHECK_INTERVAL=5
+      - FFMPEG_PATH=/usr/bin/ffmpeg
+      - IMAGEMAGICK_PATH=/usr/bin/convert
       - WORDPRESS_API_URL=${WORDPRESS_API_URL}
       - WORDPRESS_USERNAME=${WORDPRESS_USERNAME}
       - WORDPRESS_APP_PASSWORD=${WORDPRESS_APP_PASSWORD}
-      - RATE_LIMIT_REQUESTS_PER_MINUTE=${RATE_LIMIT_REQUESTS_PER_MINUTE:-10}
-      - RATE_LIMIT_MAX_CONCURRENT=${RATE_LIMIT_MAX_CONCURRENT:-100}
-      - RATE_LIMIT_MAX_JOBS_PER_DAY=${RATE_LIMIT_MAX_JOBS_PER_DAY:-1000}
-      - MAX_RETRIES=${MAX_RETRIES:-3}
-      - RETRY_BACKOFF_SECONDS=${RETRY_BACKOFF_SECONDS:-60,300,900}
+      - RATE_LIMIT_REQUESTS_PER_MINUTE=10
+      - RATE_LIMIT_MAX_CONCURRENT=100
+      - RATE_LIMIT_MAX_JOBS_PER_DAY=1000
+      - MAX_RETRIES=3
+      - RETRY_BACKOFF_SECONDS=60,300,900
     depends_on:
-      - redis
-      - db
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
     volumes:
       - compressor-tmp:/tmp/compression
     restart: unless-stopped
@@ -46,13 +50,18 @@ services:
     restart: unless-stopped
     networks:
       - compressor-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   db:
     image: postgres:15-alpine
     container_name: compressor-db
     environment:
-      - POSTGRES_DB=${POSTGRES_DB:-compression}
-      - POSTGRES_USER=${POSTGRES_USER:-compressor}
+      - POSTGRES_DB=compression
+      - POSTGRES_USER=compressor
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -60,6 +69,11 @@ services:
     restart: unless-stopped
     networks:
       - compressor-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compressor"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
 volumes:
   redis-data:

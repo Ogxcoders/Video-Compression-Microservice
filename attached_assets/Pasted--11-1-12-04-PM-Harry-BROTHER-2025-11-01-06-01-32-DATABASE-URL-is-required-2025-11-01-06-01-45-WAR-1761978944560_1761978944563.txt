@@ -1,0 +1,601 @@
+[11/1, 12:04 PM] Harry BROTHER: 2025/11/01 06:01:32 DATABASE_URL is required
+2025/11/01 06:01:45 WARNING: API_KEY is not set
+2025/11/01 06:01:45 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:01:45 DATABASE_URL is required
+2025/11/01 06:02:11 WARNING: API_KEY is not set
+2025/11/01 06:02:11 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:02:11 DATABASE_URL is required
+2025/11/01 06:03:03 WARNING: API_KEY is not set
+2025/11/01 06:03:03 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:03:03 DATABASE_URL is required
+2025/11/01 06:04:03 WARNING: API_KEY is not set
+2025/11/01 06:04:03 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:04:03 DATABASE_URL is required
+2025/11/01 06:05:03 WARNING: API_KEY is not set
+2025/11/01 06:05:03 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:05:03 DATABASE_URL is required
+2025/11/01 06:06:04 WARNING: API_KEY is not set
+2025/11/01 06:06:04 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:06:04 DATABASE_URL is required
+2025/11/01 06:07:04 WARNING: API_KEY is not set
+2025/11/01 06:07:04 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:07:04 DATABASE_URL is required
+2025/11/01 06:08:04 WARNING: API_KEY is not set
+2025/11/01 06:08:04 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:08:04 DATABASE_URL is required
+2025/11/01 06:09:05 WARNING: API_KEY is not set
+2025/11/01 06:09:05 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:09:05 DATABASE_URL is required
+2025/11/01 06:10:05 WARNING: API_KEY is not set
+2025/11/01 06:10:05 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:10:05 DATABASE_URL is required
+2025/11/01 06:11:06 WARNING: API_KEY is not set
+2025/11/01 06:11:06 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:11:06 DATABASE_URL is required
+2025/11/01 06:12:06 WARNING: API_KEY is not set
+2025/11/01 06:12:06 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:12:06 DATABASE_URL is required
+2025/11/01 06:13:06 WARNING: API_KEY is not set
+2025/11/01 06:13:06 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:13:06 DATABASE_URL is required
+2025/11/01 06:14:07 WARNING: API_KEY is not set
+2025/11/01 06:14:07 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:14:07 DATABASE_URL is required
+2025/11/01 06:15:07 WARNING: API_KEY is not set
+2025/11/01 06:15:07 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:15:07 DATABASE_URL is required
+2025/11/01 06:16:08 WARNING: API_KEY is not set
+2025/11/01 06:16:08 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:16:08 DATABASE_URL is required
+2025/11/01 06:17:08 WARNING: API_KEY is not set
+2025/11/01 06:17:08 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:17:08 DATABASE_URL is required
+2025/11/01 06:18:08 WARNING: API_KEY is not set
+2025/11/01 06:18:08 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:18:08 DATABASE_URL is required
+2025/11/01 06:19:09 WARNING: API_KEY is not set
+2025/11/01 06:19:09 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:19:09 DATABASE_URL is required
+2025/11/01 06:20:09 WARNING: API_KEY is not set
+2025/11/01 06:20:09 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:20:09 DATABASE_URL is required
+2025/11/01 06:21:09 WARNING: API_KEY is not set
+2025/11/01 06:21:09 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:21:09 DATABASE_URL is required
+2025/11/01 06:22:10 WARNING: API_KEY is not set
+2025/11/01 06:22:10 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:22:10 DATABASE_URL is required
+2025/11/01 06:23:10 WARNING: API_KEY is not set
+2025/11/01 06:23:10 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:23:10 DATABASE_URL is required
+2025/11/01 06:24:11 WARNING: API_KEY is not set
+2025/11/01 06:24:11 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:24:11 DATABASE_URL is required
+2025/11/01 06:25:11 WARNING: API_KEY is not set
+2025/11/01 06:25:11 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:25:11 DATABASE_URL is required
+2025/11/01 06:26:11 WARNING: API_KEY is not set
+2025/11/01 06:26:11 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:26:11 DATABASE_URL is required
+2025/11/01 06:27:12 WARNING: API_KEY is not set
+2025/11/01 06:27:12 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:27:12 DATABASE_URL is required
+2025/11/01 06:28:12 WARNING: API_KEY is not set
+2025/11/01 06:28:12 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:28:12 DATABASE_URL is required
+2025/11/01 06:29:13 WARNING: API_KEY is not set
+2025/11/01 06:29:13 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:29:13 DATABASE_URL is required
+2025/11/01 06:30:13 WARNING: API_KEY is not set
+2025/11/01 06:30:13 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:30:13 DATABASE_URL is required
+2025/11/01 06:31:13 WARNING: API_KEY is not set
+2025/11/01 06:31:13 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:31:13 DATABASE_URL is required
+2025/11/01 06:32:14 WARNING: API_KEY is not set
+2025/11/01 06:32:14 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:32:14 DATABASE_URL is required
+2025/11/01 06:33:14 WARNING: API_KEY is not set
+2025/11/01 06:33:14 WARNING: ALLOWED_DOMAINS is not set
+2025/11/01 06:33:14 DATABASE_URL is required
+[11/1, 12:05 PM] Harry BROTHER: 2025-Nov-01 06:31:08.989200
+Starting deployment of Ogxcoders/Video-Compression-Microservice:main to ogvid.
+2025-Nov-01 06:31:11.522391
+Preparing container with helper image: ghcr.io/coollabsio/coolify-helper:1.0.11
+2025-Nov-01 06:31:12.875778
+[CMD]: sudo docker stop --time=30 nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:31:12.875778
+Flag --time has been deprecated, use --timeout instead
+2025-Nov-01 06:31:12.893790
+Error response from daemon: No such container: nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:31:14.128613
+[CMD]: sudo docker rm -f nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:31:14.128613
+Error response from daemon: No such container: nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:31:16.567168
+[CMD]: sudo docker run -d --network coolify --name nwowkg8oc408gog4ko0wcoco  --rm -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/coollabsio/coolify-helper:1.0.11
+2025-Nov-01 06:31:16.567168
+b53c28c30a03b2375a3dd4028a981416a89879b5405b47e6f8391c919b316877
+2025-Nov-01 06:31:20.528297
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -p 22 -o Port=22 -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git ls-remote https://github.com/Ogxcoders/Video-Compression-Microservice refs/heads/main'
+2025-Nov-01 06:31:20.528297
+26af653e3fabc0f363289461786373491e26f432	refs/heads/main
+2025-Nov-01 06:31:20.743519
+----------------------------------------
+2025-Nov-01 06:31:20.963241
+Importing Ogxcoders/Video-Compression-Microservice:main (commit sha 26af653e3fabc0f363289461786373491e26f432) to /artifacts/nwowkg8oc408gog4ko0wcoco.
+2025-Nov-01 06:31:22.756084
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'git clone --depth=1 --recurse-submodules --shallow-submodules -b 'main' 'https://github.com/Ogxcoders/Video-Compression-Microservice' '/artifacts/nwowkg8oc408gog4ko0wcoco' && cd '/artifacts/nwowkg8oc408gog4ko0wcoco' && if [ -f .gitmodules ]; then sed -i "s#git@\(.*\):#https://\1/#g" '/artifacts/nwowkg8oc408gog4ko0wcoco'/.gitmodules || true && git submodule sync && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git submodule update --init --recursive --depth=1; fi && cd '/artifacts/nwowkg8oc408gog4ko0wcoco' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git lfs pull'
+2025-Nov-01 06:31:22.756084
+Cloning into '/artifacts/nwowkg8oc408gog4ko0wcoco'...
+2025-Nov-01 06:31:26.489601
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cd /artifacts/nwowkg8oc408gog4ko0wcoco && git log -1 26af653e3fabc0f363289461786373491e26f432 --pretty=%B'
+2025-Nov-01 06:31:26.489601
+Initial commit
+2025-Nov-01 06:31:28.282975
+Image not found (d4os4gs4kcskwcggww40c888:26af653e3fabc0f363289461786373491e26f432). Building new image.
+2025-Nov-01 06:31:34.574208
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cat /artifacts/nwowkg8oc408gog4ko0wcoco/Dockerfile'
+2025-Nov-01 06:31:34.574208
+FROM golang:1.21-alpine AS builder
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+RUN apk add --no-cache git make
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+WORKDIR /app
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+COPY go.mod go.sum ./
+2025-Nov-01 06:31:34.574208
+RUN go mod download
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+COPY . .
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+FROM alpine:latest
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+RUN apk add --no-cache \
+2025-Nov-01 06:31:34.574208
+ffmpeg \
+2025-Nov-01 06:31:34.574208
+imagemagick \
+2025-Nov-01 06:31:34.574208
+ca-certificates \
+2025-Nov-01 06:31:34.574208
+tzdata
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+WORKDIR /root/
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+COPY --from=builder /app/main .
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+RUN mkdir -p /tmp/compression
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+EXPOSE 3000
+2025-Nov-01 06:31:34.574208
+2025-Nov-01 06:31:34.574208
+CMD ["./main"]
+2025-Nov-01 06:31:36.511508
+Creating build-time .env file in /artifacts (outside Docker context).
+2025-Nov-01 06:31:38.956980
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cat /artifacts/build-time.env'
+2025-Nov-01 06:31:38.956980
+SOURCE_COMMIT='26af653e3fabc0f363289461786373491e26f432'
+2025-Nov-01 06:31:38.956980
+COOLIFY_URL='http://d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io'
+2025-Nov-01 06:31:38.956980
+COOLIFY_FQDN='d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io'
+2025-Nov-01 06:31:38.956980
+COOLIFY_BRANCH='main'
+2025-Nov-01 06:31:38.956980
+COOLIFY_RESOURCE_UUID='d4os4gs4kcskwcggww40c888'
+2025-Nov-01 06:31:38.956980
+COOLIFY_CONTAINER_NAME='d4os4gs4kcskwcggww40c888-063059292792'
+2025-Nov-01 06:31:40.287818
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cat /artifacts/nwowkg8oc408gog4ko0wcoco/Dockerfile'
+2025-Nov-01 06:31:40.287818
+FROM golang:1.21-alpine AS builder
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+RUN apk add --no-cache git make
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+WORKDIR /app
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+COPY go.mod go.sum ./
+2025-Nov-01 06:31:40.287818
+RUN go mod download
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+COPY . .
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+FROM alpine:latest
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+RUN apk add --no-cache \
+2025-Nov-01 06:31:40.287818
+ffmpeg \
+2025-Nov-01 06:31:40.287818
+imagemagick \
+2025-Nov-01 06:31:40.287818
+ca-certificates \
+2025-Nov-01 06:31:40.287818
+tzdata
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+WORKDIR /root/
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+COPY --from=builder /app/main .
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+RUN mkdir -p /tmp/compression
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+EXPOSE 3000
+2025-Nov-01 06:31:40.287818
+2025-Nov-01 06:31:40.287818
+CMD ["./main"]
+2025-Nov-01 06:31:40.369674
+Final Dockerfile:
+2025-Nov-01 06:31:41.468525
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cat /artifacts/nwowkg8oc408gog4ko0wcoco/Dockerfile'
+2025-Nov-01 06:31:41.468525
+FROM golang:1.21-alpine AS builder
+2025-Nov-01 06:31:41.468525
+ARG COOLIFY_CONTAINER_NAME=d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:31:41.468525
+ARG COOLIFY_RESOURCE_UUID=d4os4gs4kcskwcggww40c888
+2025-Nov-01 06:31:41.468525
+ARG COOLIFY_BRANCH=main
+2025-Nov-01 06:31:41.468525
+ARG COOLIFY_FQDN=d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io
+2025-Nov-01 06:31:41.468525
+ARG COOLIFY_URL=http://d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io
+2025-Nov-01 06:31:41.468525
+ARG SOURCE_COMMIT=26af653e3fabc0f363289461786373491e26f432
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+RUN apk add --no-cache git make
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+WORKDIR /app
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+COPY go.mod go.sum ./
+2025-Nov-01 06:31:41.468525
+RUN go mod download
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+COPY . .
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+FROM alpine:latest
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+RUN apk add --no-cache \
+2025-Nov-01 06:31:41.468525
+ffmpeg \
+2025-Nov-01 06:31:41.468525
+imagemagick \
+2025-Nov-01 06:31:41.468525
+ca-certificates \
+2025-Nov-01 06:31:41.468525
+tzdata
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+WORKDIR /root/
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+COPY --from=builder /app/main .
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+RUN mkdir -p /tmp/compression
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+EXPOSE 3000
+2025-Nov-01 06:31:41.468525
+2025-Nov-01 06:31:41.468525
+CMD ["./main"]
+2025-Nov-01 06:31:41.513603
+----------------------------------------
+2025-Nov-01 06:31:41.577942
+Building docker image started.
+2025-Nov-01 06:31:41.634163
+To check the current progress, click on Show Debug Logs.
+2025-Nov-01 06:31:43.160515
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cat /artifacts/build.sh'
+2025-Nov-01 06:31:43.160515
+cd /artifacts/nwowkg8oc408gog4ko0wcoco && set -a && source /artifacts/build-time.env && set +a && docker build   --network host -f /artifacts/nwowkg8oc408gog4ko0wcoco/Dockerfile --build-arg SOURCE_COMMIT --build-arg COOLIFY_URL --build-arg COOLIFY_FQDN --build-arg COOLIFY_BRANCH --build-arg COOLIFY_RESOURCE_UUID --build-arg COOLIFY_CONTAINER_NAME --build-arg COOLIFY_BUILD_SECRETS_HASH=1e1ed4adaf8b2be08e585e44aab3cb70cee6816e0e62d613cd48027216407924 --build-arg 'SOURCE_COMMIT' --build-arg 'COOLIFY_URL' --build-arg 'COOLIFY_FQDN' --build-arg 'COOLIFY_BRANCH' --build-arg 'COOLIFY_RESOURCE_UUID' --build-arg 'COOLIFY_CONTAINER_NAME' --progress plain -t d4os4gs4kcskwcggww40c888:26af653e3fabc0f363289461786373491e26f432 /artifacts/nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:31:44.138451
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'bash /artifacts/build.sh'
+2025-Nov-01 06:31:44.138451
+#0 building with "default" instance using docker driver
+2025-Nov-01 06:31:44.138451
+2025-Nov-01 06:31:44.138451
+#1 [internal] load build definition from Dockerfile
+2025-Nov-01 06:31:44.138451
+#1 transferring dockerfile: 804B done
+2025-Nov-01 06:31:44.138451
+#1 DONE 0.0s
+2025-Nov-01 06:31:44.138451
+2025-Nov-01 06:31:44.138451
+#2 [internal] load metadata for docker.io/library/golang:1.21-alpine
+2025-Nov-01 06:31:44.154122
+#2 ...
+2025-Nov-01 06:31:44.154122
+2025-Nov-01 06:31:44.154122
+#3 [internal] load metadata for docker.io/library/alpine:latest
+2025-Nov-01 06:31:44.154122
+#3 DONE 0.2s
+2025-Nov-01 06:31:44.309385
+#2 [internal] load metadata for docker.io/library/golang:1.21-alpine
+2025-Nov-01 06:31:44.309385
+#2 DONE 0.2s
+2025-Nov-01 06:31:44.309385
+2025-Nov-01 06:31:44.309385
+#4 [internal] load .dockerignore
+2025-Nov-01 06:31:44.309385
+#4 transferring context: 2B done
+2025-Nov-01 06:31:44.309385
+#4 DONE 0.0s
+2025-Nov-01 06:31:44.309385
+2025-Nov-01 06:31:44.309385
+#5 [builder 1/7] FROM docker.io/library/golang:1.21-alpine@sha256:2414035b086e3c42b99654c8b26e6f5b1b1598080d65fd03c7f499552ff4dc94
+2025-Nov-01 06:31:44.309385
+#5 CACHED
+2025-Nov-01 06:31:44.309385
+2025-Nov-01 06:31:44.309385
+#6 [stage-1 1/5] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412
+2025-Nov-01 06:31:44.309385
+#6 DONE 0.0s
+2025-Nov-01 06:31:44.309385
+2025-Nov-01 06:31:44.309385
+#7 [internal] load build context
+2025-Nov-01 06:31:44.309385
+#7 transferring context: 987.86kB 0.1s done
+2025-Nov-01 06:31:44.519999
+#7 DONE 0.1s
+2025-Nov-01 06:31:44.519999
+2025-Nov-01 06:31:44.519999
+#8 [builder 2/7] RUN apk add --no-cache git make
+2025-Nov-01 06:31:44.519999
+#8 0.179 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+2025-Nov-01 06:31:44.594946
+#8 0.406 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+2025-Nov-01 06:31:45.335536
+#8 1.148 (1/13) Installing brotli-libs (1.1.0-r2)
+2025-Nov-01 06:31:45.451842
+#8 1.167 (2/13) Installing c-ares (1.33.1-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.172 (3/13) Installing libunistring (1.2-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.198 (4/13) Installing libidn2 (2.3.7-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.203 (5/13) Installing nghttp2-libs (1.62.1-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.208 (6/13) Installing libpsl (0.21.5-r1)
+2025-Nov-01 06:31:45.451842
+#8 1.212 (7/13) Installing zstd-libs (1.5.6-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.227 (8/13) Installing libcurl (8.14.1-r2)
+2025-Nov-01 06:31:45.451842
+#8 1.238 (9/13) Installing libexpat (2.7.3-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.244 (10/13) Installing pcre2 (10.43-r0)
+2025-Nov-01 06:31:45.451842
+#8 1.265 (11/13) Installing git (2.45.4-r0)
+2025-Nov-01 06:31:45.573740
+#8 1.387 (12/13) Installing git-init-template (2.45.4-r0)
+2025-Nov-01 06:31:45.772407
+#8 1.393 (13/13) Installing make (4.4.1-r2)
+2025-Nov-01 06:31:45.772407
+#8 1.408 Executing busybox-1.36.1-r29.trigger
+2025-Nov-01 06:31:45.772407
+#8 1.432 OK: 20 MiB in 28 packages
+2025-Nov-01 06:31:45.936869
+#8 DONE 1.8s
+2025-Nov-01 06:31:46.039127
+#9 [builder 3/7] WORKDIR /app
+2025-Nov-01 06:31:46.039127
+#9 DONE 0.0s
+2025-Nov-01 06:31:46.039127
+2025-Nov-01 06:31:46.039127
+#10 [builder 4/7] COPY go.mod go.sum ./
+2025-Nov-01 06:31:46.039127
+#10 DONE 0.1s
+2025-Nov-01 06:31:46.191983
+#11 [builder 5/7] RUN go mod download
+2025-Nov-01 06:31:54.771078
+#11 DONE 8.7s
+2025-Nov-01 06:31:54.874057
+#12 [builder 6/7] COPY . .
+2025-Nov-01 06:31:54.874057
+#12 DONE 0.1s
+2025-Nov-01 06:31:55.026990
+#13 [builder 7/7] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
+2025-Nov-01 06:32:33.695670
+#13 DONE 38.8s
+2025-Nov-01 06:32:33.846780
+#14 [stage-1 4/5] COPY --from=builder /app/main .
+2025-Nov-01 06:32:33.846780
+#14 CACHED
+2025-Nov-01 06:32:33.846780
+2025-Nov-01 06:32:33.846780
+#15 [stage-1 2/5] RUN apk add --no-cache     ffmpeg     imagemagick     ca-certificates     tzdata
+2025-Nov-01 06:32:33.846780
+#15 CACHED
+2025-Nov-01 06:32:33.846780
+2025-Nov-01 06:32:33.846780
+#16 [stage-1 3/5] WORKDIR /root/
+2025-Nov-01 06:32:33.867008
+#16 CACHED
+2025-Nov-01 06:32:33.867008
+2025-Nov-01 06:32:33.867008
+#17 [stage-1 5/5] RUN mkdir -p /tmp/compression
+2025-Nov-01 06:32:33.867008
+#17 CACHED
+2025-Nov-01 06:32:33.867008
+2025-Nov-01 06:32:33.867008
+#18 exporting to image
+2025-Nov-01 06:32:33.867008
+#18 exporting layers done
+2025-Nov-01 06:32:33.867008
+#18 writing image sha256:6382c25b99a0df89f9e75c820b94dffdc2e579aad52159fd8c846a08535643d0 done
+2025-Nov-01 06:32:33.867008
+#18 naming to docker.io/library/d4os4gs4kcskwcggww40c888:26af653e3fabc0f363289461786373491e26f432 done
+2025-Nov-01 06:32:33.867008
+#18 DONE 0.0s
+2025-Nov-01 06:32:33.958745
+Building docker image completed.
+2025-Nov-01 06:32:34.032587
+Creating .env file with runtime variables for build phase.
+2025-Nov-01 06:32:35.198402
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'cat /artifacts/nwowkg8oc408gog4ko0wcoco/.env'
+2025-Nov-01 06:32:35.198402
+SOURCE_COMMIT=26af653e3fabc0f363289461786373491e26f432
+2025-Nov-01 06:32:35.198402
+COOLIFY_URL=http://d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io
+2025-Nov-01 06:32:35.198402
+COOLIFY_FQDN=d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io
+2025-Nov-01 06:32:35.198402
+COOLIFY_BRANCH=main
+2025-Nov-01 06:32:35.198402
+COOLIFY_RESOURCE_UUID=d4os4gs4kcskwcggww40c888
+2025-Nov-01 06:32:35.198402
+COOLIFY_CONTAINER_NAME=d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:35.198402
+PORT=3000
+2025-Nov-01 06:32:35.198402
+HOST=0.0.0.0
+2025-Nov-01 06:32:35.610286
+----------------------------------------
+2025-Nov-01 06:32:35.633080
+Rolling update started.
+2025-Nov-01 06:32:36.432227
+[CMD]: sudo docker exec nwowkg8oc408gog4ko0wcoco bash -c 'SOURCE_COMMIT=26af653e3fabc0f363289461786373491e26f432 COOLIFY_URL=http://d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io COOLIFY_FQDN=d4os4gs4kcskwcggww40c888.67.217.62.74.sslip.io COOLIFY_BRANCH=main COOLIFY_RESOURCE_UUID=d4os4gs4kcskwcggww40c888 COOLIFY_CONTAINER_NAME=d4os4gs4kcskwcggww40c888-063059292792  docker compose --project-name d4os4gs4kcskwcggww40c888 --project-directory /artifacts/nwowkg8oc408gog4ko0wcoco -f /artifacts/nwowkg8oc408gog4ko0wcoco/docker-compose.yaml up --build -d'
+2025-Nov-01 06:32:36.432227
+time="2025-11-01T06:32:36Z" level=warning msg="Found orphan containers ([d4os4gs4kcskwcggww40c888-060000833541]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+2025-Nov-01 06:32:36.432227
+Container d4os4gs4kcskwcggww40c888-063059292792  Creating
+2025-Nov-01 06:32:36.506007
+d4os4gs4kcskwcggww40c888-063059292792 Your kernel does not support memory swappiness capabilities or the cgroup is not mounted. Memory swappiness discarded.
+2025-Nov-01 06:32:36.506007
+Container d4os4gs4kcskwcggww40c888-063059292792  Created
+2025-Nov-01 06:32:36.515163
+Container d4os4gs4kcskwcggww40c888-063059292792  Starting
+2025-Nov-01 06:32:36.753827
+Container d4os4gs4kcskwcggww40c888-063059292792  Started
+2025-Nov-01 06:32:36.790944
+New container started.
+2025-Nov-01 06:32:36.816122
+Waiting for healthcheck to pass on the new container.
+2025-Nov-01 06:32:36.847240
+Healthcheck URL (inside the container): GET: http://localhost:3000/
+2025-Nov-01 06:32:36.878916
+Waiting for the start period (5 seconds) before starting healthcheck.
+2025-Nov-01 06:32:42.582917
+[CMD]: sudo docker inspect --format='{{json .State.Health.Status}}' d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:42.582917
+"unhealthy"
+2025-Nov-01 06:32:43.179878
+[CMD]: sudo docker inspect --format='{{json .State.Health.Log}}' d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:43.179878
+[]
+2025-Nov-01 06:32:43.203780
+Attempt 1 of 10 | Healthcheck status: "unhealthy"
+2025-Nov-01 06:32:43.243676
+----------------------------------------
+2025-Nov-01 06:32:43.275626
+Container logs:
+2025-Nov-01 06:32:43.628299
+[CMD]: sudo docker logs -n 100 d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:36 WARNING: API_KEY is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:36 WARNING: ALLOWED_DOMAINS is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:36 DATABASE_URL is required
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:37 WARNING: API_KEY is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:37 WARNING: ALLOWED_DOMAINS is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:37 DATABASE_URL is required
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:37 WARNING: API_KEY is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:37 WARNING: ALLOWED_DOMAINS is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:37 DATABASE_URL is required
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:38 WARNING: API_KEY is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:38 WARNING: ALLOWED_DOMAINS is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:38 DATABASE_URL is required
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:39 WARNING: API_KEY is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:39 WARNING: ALLOWED_DOMAINS is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:39 DATABASE_URL is required
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:41 WARNING: API_KEY is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:41 WARNING: ALLOWED_DOMAINS is not set
+2025-Nov-01 06:32:43.628299
+2025/11/01 06:32:41 DATABASE_URL is required
+2025-Nov-01 06:32:43.646927
+----------------------------------------
+2025-Nov-01 06:32:43.687261
+Removing old containers.
+2025-Nov-01 06:32:43.747946
+----------------------------------------
+2025-Nov-01 06:32:43.793204
+WARNING: Dockerfile or Docker Image based deployment detected. The healthcheck needs a curl or wget command to check the health of the application. Please make sure that it is available in the image or turn off healthcheck on Coolify's UI.
+2025-Nov-01 06:32:43.864801
+----------------------------------------
+2025-Nov-01 06:32:43.922162
+New container is not healthy, rolling back to the old container.
+2025-Nov-01 06:32:44.418295
+[CMD]: sudo docker stop --time=30 d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:44.418295
+Flag --time has been deprecated, use --timeout instead
+2025-Nov-01 06:32:44.432264
+d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:44.765431
+[CMD]: sudo docker rm -f d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:44.765431
+d4os4gs4kcskwcggww40c888-063059292792
+2025-Nov-01 06:32:44.799705
+Rolling update completed.
+2025-Nov-01 06:32:46.870657
+Gracefully shutting down build container: nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:32:47.306060
+[CMD]: sudo docker stop --time=30 nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:32:47.306060
+Flag --time has been deprecated, use --timeout instead
+2025-Nov-01 06:32:47.493958
+nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:32:47.850352
+[CMD]: sudo docker rm -f nwowkg8oc408gog4ko0wcoco
+2025-Nov-01 06:32:47.850352
+Error response from daemon: No such container: nwowkg8oc408gog4ko0wcoco
