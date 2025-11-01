@@ -55,19 +55,20 @@ services:
       retries: 5
 
   db:
-    image: postgres:15-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.db
     environment:
       POSTGRES_DB: compression
       POSTGRES_USER: compressor
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
     networks:
       - compressor-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U compressor"]
+      test: ["CMD-SHELL", "pg_isready -U compressor -d compression"]
       interval: 5s
       timeout: 3s
       retries: 5

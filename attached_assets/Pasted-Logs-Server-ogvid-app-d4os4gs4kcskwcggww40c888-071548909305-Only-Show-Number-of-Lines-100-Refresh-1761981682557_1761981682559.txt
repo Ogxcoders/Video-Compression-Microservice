@@ -1,0 +1,140 @@
+Logs
+Server: ogvid
+app-d4os4gs4kcskwcggww40c888-071548909305
+Only Show Number of Lines
+*
+100
+Refresh
+Stream Logs
+Include Timestamps
+
+[GIN] 2025/11/01 - 07:19:02 | 404 |      51.532µs |   152.58.86.183 | GET      "/"
+[GIN] 2025/11/01 - 07:19:03 | 404 |      14.679µs |   152.58.86.183 | GET      "/favicon.ico"
+[GIN] 2025/11/01 - 07:19:26 | 404 |       8.536µs |   152.58.86.183 | GET      "/"
+[GIN] 2025/11/01 - 07:19:28 | 404 |       6.565µs |   152.58.86.183 | GET      "/"
+[GIN] 2025/11/01 - 07:19:28 | 404 |      12.543µs |   152.58.86.183 | GET      "/"
+2025/11/01 07:17:08 Failed to connect to database:failed to ping database: dial tcp 172.30.0.4:5432: connect: connection refused
+2025/11/01 07:17:09 Failed to connect to database:failed to ping database: dial tcp 172.30.0.4:5432: connect: connection refused
+2025/11/01 07:17:11 Failed to connect to database:failed to ping database: dial tcp 172.30.0.4:5432: connect: connection refused
+2025/11/01 07:17:12 Failed to connect to database:failed to ping database: dial tcp 172.30.0.5:5432: connect: connection refused
+2025/11/01 07:17:13 Connected to PostgreSQL database
+2025/11/01 07:17:13 Connected to Redis queue
+2025/11/01 07:17:13 Worker started
+2025/11/01 07:17:13 Starting server on port 3000
+2025/11/01 07:17:13 Worker started, checking queue every 5s
+db-d4os4gs4kcskwcggww40c888-071549008784
+Only Show Number of Lines
+*
+100
+Refresh
+Stream Logs
+Include Timestamps
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2025-11-01 07:17:11.187 UTC [41] LOG:  starting PostgreSQL 15.14 on x86_64-pc-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+2025-11-01 07:17:11.190 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-11-01 07:17:11.204 UTC [44] LOG:  database system was shut down at 2025-11-01 07:17:10 UTC
+2025-11-01 07:17:11.252 UTC [41] LOG:  database system is ready to accept connections
+ done
+server started
+CREATE DATABASE
+
+
+/usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init.sql
+
+PostgreSQL Database directory appears to contain a database; Skipping initialization
+
+sh: locale: not found
+2025-11-01 07:17:09.549 UTC [35] WARNING:  no usable system locales were found
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+psql: error: /docker-entrypoint-initdb.d/init.sql: Permission denied
+2025-11-01 07:17:12.769 UTC [1] LOG:  starting PostgreSQL 15.14 on x86_64-pc-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+2025-11-01 07:17:12.769 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-11-01 07:17:12.769 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2025-11-01 07:17:12.775 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-11-01 07:17:12.792 UTC [29] LOG:  database system was interrupted; last known up at 2025-11-01 07:17:11 UTC
+2025-11-01 07:17:12.999 UTC [29] LOG:  database system was not properly shut down; automatic recovery in progress
+2025-11-01 07:17:13.011 UTC [29] LOG:  redo starts at 0/1509918
+2025-11-01 07:17:13.069 UTC [29] LOG:  invalid record length at 0/192D4A0: wanted 24, got 0
+2025-11-01 07:17:13.069 UTC [29] LOG:  redo done at 0/192D458 system usage: CPU: user: 0.00 s, system: 0.02 s, elapsed: 0.06 s
+2025-11-01 07:17:13.079 UTC [27] LOG:  checkpoint starting: end-of-recovery immediate wait
+2025-11-01 07:17:13.218 UTC [27] LOG:  checkpoint complete: wrote 921 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.080 s, sync=0.040 s, total=0.142 s; sync files=301, longest=0.005 s, average=0.001 s; distance=4239 kB, estimate=4239 kB
+2025-11-01 07:17:13.270 UTC [1] LOG:  database system is ready to accept connections
+2025-11-01 07:17:17.660 UTC [40] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:22.739 UTC [47] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:27.822 UTC [54] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:32.897 UTC [61] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:37.972 UTC [68] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:43.044 UTC [75] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:48.123 UTC [82] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:53.195 UTC [89] FATAL:  database "compressor" does not exist
+2025-11-01 07:17:58.264 UTC [96] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:03.333 UTC [103] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:08.405 UTC [110] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:13.486 UTC [117] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:18.561 UTC [124] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:23.648 UTC [131] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:28.732 UTC [138] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:33.814 UTC [145] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:38.912 UTC [152] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:43.993 UTC [159] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:49.077 UTC [166] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:54.161 UTC [173] FATAL:  database "compressor" does not exist
+2025-11-01 07:18:59.255 UTC [180] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:04.347 UTC [187] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:09.430 UTC [194] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:14.521 UTC [202] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:19.659 UTC [209] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:24.756 UTC [216] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:29.846 UTC [223] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:34.953 UTC [230] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:40.035 UTC [237] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:45.118 UTC [244] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:50.189 UTC [251] FATAL:  database "compressor" does not exist
+2025-11-01 07:19:55.269 UTC [258] FATAL:  database "compressor" does not exist
+redis-d4os4gs4kcskwcggww40c888-071548989812
+Only Show Number of Lines
+*
+100
+Refresh
+Stream Logs
+Include Timestamps
+
+1:C 01 Nov 2025 07:17:08.210 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:C 01 Nov 2025 07:17:08.210 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 01 Nov 2025 07:17:08.210 * Redis version=7.4.6, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 01 Nov 2025 07:17:08.210 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 01 Nov 2025 07:17:08.214 * monotonic clock: POSIX clock_gettime
+1:M 01 Nov 2025 07:17:08.216 * Running mode=standalone, port=6379.
+1:M 01 Nov 2025 07:17:08.217 * Server initialized
+1:M 01 Nov 2025 07:17:08.217 * Loading RDB produced by version 7.4.6
+1:M 01 Nov 2025 07:17:08.217 * RDB age 5 seconds
+1:M 01 Nov 2025 07:17:08.217 * RDB memory usage when created 0.93 Mb
+1:M 01 Nov 2025 07:17:08.217 * Done loading RDB, keys loaded: 0, keys expired: 0.
+1:M 01 Nov 2025 07:17:08.217 * DB loaded from disk: 0.000 seconds
+1:M 01 Nov 2025 07:17:08.217 * Ready to accept connections tcp
